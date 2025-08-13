@@ -6,13 +6,11 @@
 
 PC 端自用日常任务清理助手：DoroHelper。支持国际服和港澳台服客户端。
 
+延續 DoroHelper v0.1.22
+
 ![image](https://github.com/kevinboy666/DoroHelperLegacy/blob/master/img/preview.png)
 
-### 叠甲：
-
 使用任何脚本程序均有封号风险，请谨慎。
-
-### 再叠甲：
 
 程序是根据我自己的账号进度写的，所以可能会有操作不兼容的情况出现。第一次使用最好在旁边看着。万一 Doro 失控，请按 Ctrl + Z 组合键结束进程。
 
