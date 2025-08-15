@@ -123,7 +123,6 @@ isAutoOff(sX, sY, k) {
 
     if Abs(r - g) < 10 && Abs(r - b) < 10 && Abs(g - b) < 10
         return true
-
     return false
 }
 
@@ -152,17 +151,17 @@ CheckAutoBattle() {
 }
 
 Login() {
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
         if UserCheckColor([1973, 1969], [1368, 1432], ["0x00ADFB", "0x00ADFB"], scrRatio) {
@@ -188,17 +187,17 @@ Login() {
 }
 
 BackToHall() {
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
@@ -211,18 +210,18 @@ BackToHall() {
 ;1: 防御前哨基地奖励
 OutpostDefence() {
 Start:
-    stdTargetX := 1092
-    stdTargetY := 1795
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1092
+    targetY := 1795
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
     ;standard checkpoint
-    stdCkptX := [1500, 1847]
-    stdCkptY := [1816, 1858]
+    checkX := [1500, 1847]
+    checkY := [1816, 1858]
     desiredColor := ["0xF8FCFD", "0xF7FCFD"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入防御前哨失败！"
@@ -236,17 +235,17 @@ Start:
     }
 
     ;一举歼灭
-    stdTargetX := 1686
-    stdTargetY := 1846
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1686
+    targetY := 1846
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1500, 1847]
-    stdCkptY := [1816, 1858]
+    checkX := [1500, 1847]
+    checkY := [1816, 1858]
     desiredColor := ["0xF8FCFD", "0xF7FCFD"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入一举歼灭失败！"
@@ -260,24 +259,24 @@ Start:
     }
 
     ;如有免费次数则扫荡，否则跳过
-    stdCkptX := [1933]
-    stdCkptY := [1648]
+    checkX := [1933]
+    checkY := [1648]
     desiredColor := ["0xE9ECF0"]
 
-    if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        stdTargetX := 2093
-        stdTargetY := 1651
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        targetX := 2093
+        targetY := 1651
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
-        ;UserClick(stdTargetX, stdTargetY, scrRatio)
+        ;UserClick(targetX, targetY, scrRatio)
         ;Sleep sleepTime
 
-        stdCkptX := [1933]
-        stdCkptY := [1648]
+        checkX := [1933]
+        checkY := [1648]
         desiredColor := ["0x11ADF5"]
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
             if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
@@ -291,14 +290,14 @@ Start:
         }
 
         ;如果升级，把框点掉
-        stdCkptX := [2356]
-        stdCkptY := [1870]
+        checkX := [2356]
+        checkY := [1870]
         desiredColor := ["0x0EAFF4"]
-        stdTargetX := 2156
-        stdTargetY := 1846
+        targetX := 2156
+        targetY := 1846
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
             if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
@@ -312,14 +311,14 @@ Start:
         }
     }
     else {
-        stdCkptX := [2356]
-        stdCkptY := [1870]
+        checkX := [2356]
+        checkY := [1870]
         desiredColor := ["0x0EAFF4"]
-        stdTargetX := 2156
-        stdTargetY := 1846
+        targetX := 2156
+        targetY := 1846
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
             if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
@@ -334,22 +333,22 @@ Start:
     }
 
     ;获得奖励
-    stdTargetX := 2156
-    stdTargetY := 1846
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2156
+    targetY := 1846
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
-    ;UserClick(stdTargetX, stdTargetY, scrRatio)
+    ;UserClick(targetX, targetY, scrRatio)
     ;Sleep sleepTime // 2
     ;多点一下，以防升级
-    ;UserClick(stdTargetX, stdTargetY, scrRatio)
+    ;UserClick(targetX, targetY, scrRatio)
     ;Sleep sleepTime // 2
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
             UserClick(2202, 1342, scrRatio)
@@ -369,16 +368,16 @@ Start:
 ;2: 付费商店每日每周免费钻
 CashShop() {
     ;进入商店
-    stdTargetX := 1163
-    stdTargetY := 1354
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1163
+    targetY := 1354
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [158, 199]
-    stdCkptY := [525, 439]
+    checkX := [158, 199]
+    checkY := [525, 439]
     desiredColor := ["0x0DC2F4", "0x3B3E41"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         if UserCheckColor([2047], [1677], ["0x00A0EB"], scrRatio) or UserCheckColor([2047], [1677], ["0x9A9B9A"],
         scrRatio) {
             UserClick(1789, 1387, scrRatio)
@@ -394,7 +393,7 @@ CashShop() {
             break
         }
 
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
             UserClick(2202, 1342, scrRatio)
@@ -421,30 +420,30 @@ CashShop() {
 
     delta := false
 
-    stdCkptX := [52]
-    stdCkptY := [464]
+    checkX := [52]
+    checkY := [464]
     desiredColor := ["0xF7FCFD"]
 
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio)
         delta := true
 
-    stdTargetX := 256
+    targetX := 256
     if delta
-        stdTargetX := 432
-    stdTargetY := 486
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 432
+    targetY := 486
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [194]
+    checkX := [194]
     if delta
-        stdCkptX := [373]
-    stdCkptY := [436]
+        checkX := [373]
+    checkY := [436]
     desiredColor := ["0x0FC7F5"]
     if delta
         desiredColor := ["0x0BC7F4"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入礼包页面失败！"
@@ -452,43 +451,43 @@ CashShop() {
         }
     }
 
-    stdCkptX := [514]
-    stdCkptY := [1018]
+    checkX := [514]
+    checkY := [1018]
     desiredColor := ["0xF2F8FC"]
 
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        stdTargetX := stdTargetX - 172
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        targetX := targetX - 172
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
     }
 
     del := 336
 
-    stdCkptX := [1311]
-    stdCkptY := [612]
+    checkX := [1311]
+    checkY := [612]
     desiredColor := ["0xA0A0AC"]
 
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio)
         del := 0
 
     ;每日
-    stdTargetX := 545 - del
-    stdTargetY := 610
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 545 - del
+    targetY := 610
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [431 - del]
-    stdCkptY := [594]
+    checkX := [431 - del]
+    checkY := [594]
     desiredColor := ["0x0EC7F5"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入每日礼包页面失败！"
@@ -496,27 +495,27 @@ CashShop() {
         }
     }
 
-    stdTargetX := 212
-    stdTargetY := 1095
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 212
+    targetY := 1095
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
 
     ;每周
-    stdTargetX := 878 - del
-    stdTargetY := 612
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 878 - del
+    targetY := 612
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [769 - del]
-    stdCkptY := [600]
+    checkX := [769 - del]
+    checkY := [600]
     desiredColor := ["0x0CC8F4"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入每周礼包页面失败！"
@@ -524,27 +523,27 @@ CashShop() {
         }
     }
 
-    stdTargetX := 212
-    stdTargetY := 1095
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 212
+    targetY := 1095
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
 
     ;每月
-    stdTargetX := 1211 - del
-    stdTargetY := 612
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1211 - del
+    targetY := 612
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1114 - del]
-    stdCkptY := [600]
+    checkX := [1114 - del]
+    checkY := [600]
     desiredColor := ["0x0CC8F4"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入每月礼包页面失败！"
@@ -552,27 +551,27 @@ CashShop() {
         }
     }
 
-    stdTargetX := 212
-    stdTargetY := 1095
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 212
+    targetY := 1095
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
 
     ;回到大厅
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "退出付费商店失败！"
@@ -614,17 +613,17 @@ BuyThisBook(coor, k) {
 
 FreeShop(numOfBook) {
     ;进入商店
-    stdTargetX := 1193
-    stdTargetY := 1487
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1193
+    targetY := 1487
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [118]
-    stdCkptY := [908]
+    checkX := [118]
+    checkY := [908]
     desiredColor := ["0xF99217"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入普通商店失败！"
@@ -633,23 +632,23 @@ FreeShop(numOfBook) {
     }
 
     ;如果今天没白嫖过
-    stdCkptX := [349]
-    stdCkptY := [1305]
+    checkX := [349]
+    checkY := [1305]
     desiredColor := ["0x127CD7"]
 
-    if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         ;白嫖第一次
-        stdTargetX := 383
-        stdTargetY := 1480
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 383
+        targetY := 1480
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [2063]
-        stdCkptY := [1821]
+        checkX := [2063]
+        checkY := [1821]
         desiredColor := ["0x079FE4"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime // 2
             if A_Index > waitTolerance {
                 MsgBox "普通商店白嫖异常！"
@@ -657,17 +656,17 @@ FreeShop(numOfBook) {
             }
         }
 
-        stdTargetX := 2100
-        stdTargetY := 1821
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 2100
+        targetY := 1821
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [118]
-        stdCkptY := [908]
+        checkX := [118]
+        checkY := [908]
         desiredColor := ["0xF99217"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime // 2
             if A_Index > waitTolerance {
                 MsgBox "普通商店白嫖异常！"
@@ -676,23 +675,23 @@ FreeShop(numOfBook) {
         }
 
         ;如果还有免费次数，则白嫖第二次
-        stdCkptX := [697]
-        stdCkptY := [949]
+        checkX := [697]
+        checkY := [949]
         desiredColor := ["0xFB5C24"]
 
-        if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        if UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
             ;刷新
-            stdTargetX := 476
-            stdTargetY := 981
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 476
+            targetY := 981
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [2133]
-            stdCkptY := [1345]
+            checkX := [2133]
+            checkY := [1345]
             desiredColor := ["0x00A0EB"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "普通商店刷新异常！"
@@ -700,19 +699,19 @@ FreeShop(numOfBook) {
                 }
             }
 
-            stdTargetX := 2221
-            stdTargetY := 1351
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2221
+            targetY := 1351
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [118]
-            stdCkptY := [908]
+            checkX := [118]
+            checkY := [908]
             desiredColor := ["0xF99217"]
-            stdTargetX := 588
-            stdTargetY := 1803
+            targetX := 588
+            targetY := 1803
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "普通商店刷新异常！"
@@ -721,17 +720,17 @@ FreeShop(numOfBook) {
             }
 
             ;第二次白嫖
-            stdTargetX := 383
-            stdTargetY := 1480
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 383
+            targetY := 1480
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [2063]
-            stdCkptY := [1821]
+            checkX := [2063]
+            checkY := [1821]
             desiredColor := ["0x079FE4"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "普通商店白嫖异常！"
@@ -739,17 +738,17 @@ FreeShop(numOfBook) {
                 }
             }
 
-            stdTargetX := 2100
-            stdTargetY := 1821
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2100
+            targetY := 1821
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [118]
-            stdCkptY := [908]
+            checkX := [118]
+            checkY := [908]
             desiredColor := ["0xF99217"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "普通商店白嫖异常！"
@@ -761,17 +760,17 @@ FreeShop(numOfBook) {
     }
 
     ;废铁商店检查是否已经购买
-    stdTargetX := 137
-    stdTargetY := 1737
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 137
+    targetY := 1737
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [137]
-    stdCkptY := [1650]
+    checkX := [137]
+    checkY := [1650]
     desiredColor := ["0xFB931A"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "废铁商店进入异常！"
@@ -784,11 +783,11 @@ FreeShop(numOfBook) {
 
     global isBoughtTrash
 
-    stdCkptX := [349]
-    stdCkptY := [1305]
+    checkX := [349]
+    checkY := [1305]
     desiredColor := ["0x137CD5"]
 
-    if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         isBoughtTrash := 0
     }
     else {
@@ -797,17 +796,17 @@ FreeShop(numOfBook) {
 
     ;如果需要，则购买竞技场商店前三本书
     if numOfBook >= 1 or isCheckedCompanyWeapon {
-        stdTargetX := 134
-        stdTargetY := 1403
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 134
+        targetY := 1403
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [134]
-        stdCkptY := [1316]
+        checkX := [134]
+        checkY := [1316]
         desiredColor := ["0xFA9318"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime // 2
             if A_Index > waitTolerance {
                 MsgBox "竞技场商店进入异常！"
@@ -822,23 +821,23 @@ FreeShop(numOfBook) {
     if numOfBook >= 1 {
         ;购买第一本书
         ;如果今天没买过
-        stdCkptX := [349]
-        stdCkptY := [1305]
+        checkX := [349]
+        checkY := [1305]
         desiredColor := ["0x127CD7"]
 
         ;如果今天没买过
-        if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) and BuyThisBook([378, 1210], scrRatio) {
-            stdTargetX := 384
-            stdTargetY := 1486
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) and BuyThisBook([378, 1210], scrRatio) {
+            targetX := 384
+            targetY := 1486
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [2067]
-            stdCkptY := [1770]
+            checkX := [2067]
+            checkY := [1770]
             desiredColor := ["0x07A0E4"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "第一本书购买异常！"
@@ -846,21 +845,21 @@ FreeShop(numOfBook) {
                 }
             }
 
-            stdTargetX := 2067
-            stdTargetY := 1770
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2067
+            targetY := 1770
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [134]
-            stdCkptY := [1316]
+            checkX := [134]
+            checkY := [1316]
             desiredColor := ["0xFA9318"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index >= 2 {
-                    stdTargetX := 2067
-                    stdTargetY := 1970
+                    targetX := 2067
+                    targetY := 1970
                 }
                 if A_Index > waitTolerance {
                     MsgBox "第一本书购买异常！"
@@ -873,22 +872,22 @@ FreeShop(numOfBook) {
     if numOfBook >= 2 {
         ;购买第二本书
         ;如果今天没买过
-        stdCkptX := [673]
-        stdCkptY := [1305]
+        checkX := [673]
+        checkY := [1305]
         desiredColor := ["0x137CD5"]
 
-        if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) and BuyThisBook([702, 1210], scrRatio) {
-            stdTargetX := 702
-            stdTargetY := 1484
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) and BuyThisBook([702, 1210], scrRatio) {
+            targetX := 702
+            targetY := 1484
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [2067]
-            stdCkptY := [1770]
+            checkX := [2067]
+            checkY := [1770]
             desiredColor := ["0x07A0E4"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "第二本书购买异常！"
@@ -896,21 +895,21 @@ FreeShop(numOfBook) {
                 }
             }
 
-            stdTargetX := 2067
-            stdTargetY := 1770
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2067
+            targetY := 1770
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [134]
-            stdCkptY := [1316]
+            checkX := [134]
+            checkY := [1316]
             desiredColor := ["0xFA9318"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index >= 2 {
-                    stdTargetX := 2067
-                    stdTargetY := 1970
+                    targetX := 2067
+                    targetY := 1970
                 }
                 if A_Index > waitTolerance {
                     MsgBox "第二本书购买异常！"
@@ -923,22 +922,22 @@ FreeShop(numOfBook) {
     if numOfBook >= 3 {
         ;购买第三本书
         ;如果今天没买过
-        stdCkptX := [997]
-        stdCkptY := [1304]
+        checkX := [997]
+        checkY := [1304]
         desiredColor := ["0x147BD4"]
 
-        if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) and BuyThisBook([1025, 1210], scrRatio) {
-            stdTargetX := 1030
-            stdTargetY := 1485
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) and BuyThisBook([1025, 1210], scrRatio) {
+            targetX := 1030
+            targetY := 1485
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [2067]
-            stdCkptY := [1770]
+            checkX := [2067]
+            checkY := [1770]
             desiredColor := ["0x07A0E4"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "第三本书购买异常！"
@@ -946,21 +945,21 @@ FreeShop(numOfBook) {
                 }
             }
 
-            stdTargetX := 2067
-            stdTargetY := 1770
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2067
+            targetY := 1770
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [134]
-            stdCkptY := [1316]
+            checkX := [134]
+            checkY := [1316]
             desiredColor := ["0xFA9318"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index >= 2 {
-                    stdTargetX := 2067
-                    stdTargetY := 1970
+                    targetX := 2067
+                    targetY := 1970
                 }
                 if A_Index > waitTolerance {
                     MsgBox "第三本书购买异常！"
@@ -971,22 +970,22 @@ FreeShop(numOfBook) {
     }
 
     if isCheckedCompanyWeapon {
-        stdCkptX := [2011]
-        stdCkptY := [1213]
+        checkX := [2011]
+        checkY := [1213]
         desiredColor := ["0xD65E46"]
 
-        if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            stdTargetX := 2017
-            stdTargetY := 1485
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        if UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            targetX := 2017
+            targetY := 1485
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [2067]
-            stdCkptY := [1770]
+            checkX := [2067]
+            checkY := [1770]
             desiredColor := ["0x07A0E4"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index > waitTolerance {
                     MsgBox "公司武器熔炉购买异常！"
@@ -994,21 +993,21 @@ FreeShop(numOfBook) {
                 }
             }
 
-            stdTargetX := 2067
-            stdTargetY := 1770
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2067
+            targetY := 1770
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [134]
-            stdCkptY := [1316]
+            checkX := [134]
+            checkY := [1316]
             desiredColor := ["0xFA9318"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime // 2
                 if A_Index >= 2 {
-                    stdTargetX := 2067
-                    stdTargetY := 1970
+                    targetX := 2067
+                    targetY := 1970
                 }
                 if A_Index > waitTolerance {
                     MsgBox "公司武器熔炉购买异常！"
@@ -1018,17 +1017,17 @@ FreeShop(numOfBook) {
         }
     }
 
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "退出免费商店失败！"
@@ -1041,17 +1040,17 @@ FreeShop(numOfBook) {
 ;4: 派遣
 Expedition() {
     ;进入前哨基地
-    stdTargetX := 1169
-    stdTargetY := 1663
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1169
+    targetY := 1663
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入前哨基地失败！"
@@ -1059,11 +1058,11 @@ Expedition() {
         }
     }
 
-    stdCkptX := [1907, 1963, 1838, 2034]
-    stdCkptY := [1817, 1852, 1763, 1877]
+    checkX := [1907, 1963, 1838, 2034]
+    checkY := [1817, 1852, 1763, 1877]
     desiredColor := ["0xFFFFFF", "0xFFFFFF", "0x0B1219", "0x0B1219"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入前哨基地失败！"
@@ -1073,17 +1072,17 @@ Expedition() {
 
     ;派遣公告栏
     ;收菜
-    stdTargetX := 2002
-    stdTargetY := 2046
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2002
+    targetY := 2046
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2113, 2119, 2387]
-    stdCkptY := [372, 399, 384]
+    checkX := [2113, 2119, 2387]
+    checkY := [372, 399, 384]
     desiredColor := ["0x404240", "0x404240", "0x404240"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入派遣失败！"
@@ -1091,37 +1090,37 @@ Expedition() {
         }
     }
 
-    stdTargetX := 2268
-    stdTargetY := 1814
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2268
+    targetY := 1814
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
     Sleep 3000
 
     ;全部派遣
-    stdCkptX := [1869, 1977]
-    stdCkptY := [1777, 1847]
+    checkX := [1869, 1977]
+    checkY := [1777, 1847]
     desiredColor := ["0xCFCFCF", "0xCFCFCF"]
 
     ;如果今天没派遣过
-    if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        stdTargetX := 1930
-        stdTargetY := 1813
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        targetX := 1930
+        targetY := 1813
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [2199, 2055]
-        stdCkptY := [1796, 1853]
+        checkX := [2199, 2055]
+        checkY := [1796, 1853]
         desiredColor := ["0x00ADFF", "0x00ADFF"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "全部派遣失败！"
@@ -1132,17 +1131,17 @@ Expedition() {
                 break
         }
 
-        stdTargetX := 2073
-        stdTargetY := 1818
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 2073
+        targetY := 1818
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [2199, 2055]
-        stdCkptY := [1796, 1853]
+        checkX := [2199, 2055]
+        checkY := [1796, 1853]
         desiredColor := ["0x00ADFF", "0x00ADFF"]
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "全部派遣失败！"
@@ -1152,17 +1151,17 @@ Expedition() {
     }
 
     ;回到大厅
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退出前哨基地失败！"
@@ -1174,17 +1173,17 @@ Expedition() {
 ;=============================================================
 ;5: 好友点数收取
 FriendPoint() {
-    stdTargetX := 3729
-    stdTargetY := 553
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 3729
+    targetY := 553
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入好友界面失败！"
@@ -1192,13 +1191,13 @@ FriendPoint() {
         }
     }
 
-    stdCkptX := [2104, 2197]
-    stdCkptY := [1825, 1838]
+    checkX := [2104, 2197]
+    checkY := [1825, 1838]
     desiredColor := ["0x0CAFF4", "0xF7FDFE"]
-    stdTargetX := 2276
-    stdTargetY := 1837
+    targetX := 2276
+    targetY := 1837
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) && !UserCheckColor([2104, 2054], [1825, 1876], [
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) && !UserCheckColor([2104, 2054], [1825, 1876], [
         "0x8B8788", "0x8B8788"], scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
@@ -1207,8 +1206,8 @@ FriendPoint() {
         }
     }
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "赠送好友点数失败"
@@ -1216,17 +1215,17 @@ FriendPoint() {
         }
     }
 
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退出好友界面失败！"
@@ -1239,17 +1238,17 @@ FriendPoint() {
 ;6: 模拟室5C
 SimulationRoom()
 {
-    stdTargetX := 2689
-    stdTargetY := 1463
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2689
+    targetY := 1463
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -1257,11 +1256,11 @@ SimulationRoom()
         }
     }
 
-    stdCkptX := [1605]
-    stdCkptY := [280]
+    checkX := [1605]
+    checkY := [280]
     desiredColor := ["0x01D4F6"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -1270,17 +1269,17 @@ SimulationRoom()
     }
     
     ;进入模拟室
-    stdTargetX := 1547
-    stdTargetY := 1138
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1547
+    targetY := 1138
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1829, 2024]
-    stdCkptY := [1122, 1094]
+    checkX := [1829, 2024]
+    checkY := [1122, 1094]
     desiredColor := ["0xF8FCFD", "0xF8FCFD"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入模拟室失败！"
@@ -1291,17 +1290,17 @@ SimulationRoom()
     ;MsgBox "ok"
 
     ;开始模拟
-    stdTargetX := 1917
-    stdTargetY := 1274
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1917
+    targetY := 1274
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2054, 2331]
-    stdCkptY := [719, 746]
+    checkX := [2054, 2331]
+    checkY := [719, 746]
     desiredColor := ["0xF8FBFD", "0xF8FBFD"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入选关失败！"
@@ -1310,34 +1309,34 @@ SimulationRoom()
     }
 
     ;选择5C
-    stdTargetX := 2127
-    stdTargetY := 1074
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2127
+    targetY := 1074
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
 
-    stdTargetX := 2263
-    stdTargetY := 1307
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2263
+    targetY := 1307
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
 
     
     ;点击开始模拟
     ;开始模拟
-    stdTargetX := 2216
-    stdTargetY := 1818
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2216
+    targetY := 1818
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1991]
-    stdCkptY := [1814]
+    checkX := [1991]
+    checkY := [1814]
     desiredColor := ["0xFA801A"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "开始模拟失败！"
@@ -1345,14 +1344,14 @@ SimulationRoom()
         }
     }
 
-    stdTargetX := 1903
-    stdTargetY := 1369
-    stdCkptX := [304]
-    stdCkptY := [179]
+    targetX := 1903
+    targetY := 1369
+    checkX := [304]
+    checkY := [179]
     desiredColor := ["0x858289"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入buff选择页面失败！"
@@ -1360,27 +1359,27 @@ SimulationRoom()
         }
     }
 
-    stdCkptX := [1760]
+    checkX := [1760]
     yy := 2160
-    stdCkptY := [yy]
+    checkY := [yy]
     desiredColor := ["0xDFE1E1"]
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         yy := yy - 30
-        stdCkptY := [yy]
+        checkY := [yy]
         if A_Index > waitTolerance {
             ExitApp
         }
     }
 
-    stdTargetX := 1760
-    stdTargetY := yy
+    targetX := 1760
+    targetY := yy
 
-    stdCkptX := [2053]
-    stdCkptY := [1933]
+    checkX := [2053]
+    checkY := [1933]
     desiredColor := ["0x2E77C1"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入战斗准备页面失败！"
@@ -1388,423 +1387,23 @@ SimulationRoom()
         }
     }
 
-    /*
-    stdCkptX := [1682]
-    stdCkptY := [1863]
-    desiredColor := ["0x000000"]
-
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "开始模拟失败！"
-            ExitApp
-        }
-    }
-
-    ;1C-5C
-    loop 5 {
-        ;选择最右边的关卡
-        stdTargetX := 2255
-        stdTargetY := 1478
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-
-        stdCkptX := [1912]
-        stdCkptY := [1943]
-        desiredColor := ["0xF8FCFD"]
-
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-            if A_Index > waitTolerance {
-                MsgBox "选择关卡失败！"
-                ExitApp
-            }
-        }
-
-        stdCkptX := [2062]
-        stdCkptY := [1850]
-        desiredColor := ["0xF96F36"]
-
-        ;如果是战斗关卡
-        if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            ;点击快速战斗
-            stdTargetX := 2233
-            stdTargetY := 1854
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-
-            stdCkptX := [2062]
-            stdCkptY := [1850]
-            desiredColor := ["0xF96F36"]
-
-            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-                if A_Index > waitTolerance {
-                    MsgBox "快速战斗失败！"
-                    ExitApp
-                }
-            }
-
-            stdCkptX := [2112]
-            stdCkptY := [1808]
-            desiredColor := ["0x05A0E3"]
-
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) && !UserCheckColor(stdCkptX, [1808 + 79], desiredColor, scrRatio) {
-                Sleep sleepTime
-                if A_Index > waitTolerance {
-                    MsgBox "快速战斗失败！"
-                    ExitApp
-                }
-            }
-
-            Sleep 2000 ;kkk
-            if sleepTime <= 1000
-                Sleep 250
-
-            ;点击不选择
-            deltaY := 0
-            stdCkptX := [1599]
-            stdCkptY := [1811 + 79]
-            desiredColor := ["0xDEE1E1"]
-            if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
-                deltaY := 79
-
-            ;if deltaY == 79
-            ;    MsgBox "79"
-
-            stdTargetX := 1631
-            stdTargetY := 1811 + deltaY
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-
-            stdCkptX := [2112]
-            stdCkptY := [1808 + deltaY]
-            desiredColor := ["0x05A0E3"]
-
-            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-                if A_Index > waitTolerance {
-                    MsgBox "不选择buff失败！"
-                    ExitApp
-                }
-            }
-
-            ;点击确认
-            stdTargetX := 2146
-            stdTargetY := 1349
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-
-            stdCkptX := [2081]
-            stdCkptY := [1320]
-            desiredColor := ["0x00A0EB"]
-
-            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-                if A_Index > waitTolerance {
-                    MsgBox "不选择buff失败！"
-                    ExitApp
-                }
-            }
-        }
-        else {
-            Sleep 2000 ;kkk
-            if sleepTime <= 1000
-                Sleep 250
-
-            stdCkptX := [1636, 2053]
-            stdCkptY := [1991, 1991]
-            desiredColor := ["0xE0E2E2", "0x13A1E4"]
-    
-            ;如果是可以不选择的buff关卡
-            if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                ;点击不选择
-                stdTargetX := 1743
-                stdTargetY := 2019
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-
-                stdCkptX := [2053]
-                stdCkptY := [1991]
-                desiredColor := ["0x13A1E4"]
-
-                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                    if A_Index > waitTolerance {
-                        MsgBox "不选择buff失败！"
-                        ExitApp
-                    }
-                }
-
-                ;点击确认
-                stdTargetX := 2180
-                stdTargetY := 1346
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-
-                stdCkptX := [2080]
-                stdCkptY := [1319]
-                desiredColor := ["0x00A0EB"]
-
-                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                    if A_Index > waitTolerance {
-                        MsgBox "不选择buff失败！"
-                        ExitApp
-                    }
-                }
-
-                ;点击确认
-                stdTargetX := 1932
-                stdTargetY := 1293
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-
-                stdCkptX := [1836]
-                stdCkptY := [1260]
-                desiredColor := ["0x069FE3"]
-
-                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                    if A_Index > waitTolerance {
-                        MsgBox "不选择buff失败！"
-                        ExitApp
-                    }
-                }
-            }
-            else {
-                ;是必须选择的关卡
-                ;选择buff
-                stdTargetX := 1885
-                stdTargetY := 1862
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime // 2
-                stdTargetX := 1904
-                stdTargetY := 1900
-                UserClick(stdTargetX, stdTargetY, scrRatio)
-                Sleep sleepTime
-
-                if sleepTime <= 1000
-                    Sleep 1000
-
-                ;点击确认
-                stdCkptX := [1858]
-                stdCkptY := [1572]
-                desiredColor := ["0x069FE3"]
-
-                if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                    stdTargetX := 1923
-                    stdTargetY := 1589
-                    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
-                        Sleep sleepTime
-                        if A_Index > waitTolerance {
-                            MsgBox "确认失败！"
-                            ExitApp
-                        }
-                    }
-                }
-                else {
-                    stdTargetX := 1908
-                    stdTargetY := 2016
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime // 2
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-
-                    ;不替换buff
-                    ;点击不选择和确定
-                    tX := 2104
-                    tY := 1656
-                    desiredColor := ["0x089FE4"]
-
-                    flag := true
-
-                    while !UserCheckColor([tX], [tY], desiredColor, scrRatio) {
-                        tY := tY + 65
-                        if tY > 2160 {
-                            flag := false
-                            break
-                        }
-                    }
-
-                    if !flag {
-                        /*
-                        stdTargetX := 1908
-                        stdTargetY := 2016
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
-                        Sleep sleepTime // 2
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
-                        Sleep sleepTime // 2
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
-                        Sleep sleepTime // 2
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
-                        Sleep sleepTime
-                        
-                        continue
-                    }
-
-                    ;MsgBox "点不选择"
-                    stdTargetX := 2185
-                    stdTargetY := tY - 200
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime // 2
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime // 2
-
-                    ;MsgBox "点击确定"
-                    stdTargetX := 2185
-                    stdTargetY := tY
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-
-                    stdCkptX := [2104]
-                    stdCkptY := [tY]
-                    desiredColor := ["0x089FE4"]
-
-                    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
-                        Sleep sleepTime
-                        if A_Index > waitTolerance {
-                            MsgBox "模拟室结束异常！"
-                            ExitApp
-                        }
-                    }
-
-                    stdTargetX := 1908
-                    stdTargetY := 2016
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime // 2
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime // 2
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
-                    Sleep sleepTime
-                }
-            }
-        }
-    }
-
-    ;6C
-    ;选择右边一个关卡
-    stdTargetX := 2084
-    stdTargetY := 1508
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-
-    stdCkptX := [1921]
-    stdCkptY := [1921]
-    desiredColor := ["0x000000"]
-
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "选择关卡失败！"
-            ExitApp
-        }
-    }
-
-    Sleep 1500 ;kkk
-    if sleepTime <= 1000
-        Sleep 750
-
-    stdCkptX := [1648]
-    stdCkptY := [1995]
-    desiredColor := ["0xE1E2E2"]
-
-    ;如果是属性提升
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        stdTargetX := 1711
-        stdTargetY := 2020
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-            if A_Index > waitTolerance {
-                MsgBox "不选择失败！"
-                ExitApp
-            }
-        }
-
-        stdTargetX := 2304
-        stdTargetY := 1338
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-    }
-    else {
-        ;如果是疗养室
-        stdTargetX := 1908
-        stdTargetY := 1767
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-
-        stdTargetX := 1892
-        stdTargetY := 2014
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime // 2
-    }
-
-    ;7C
-    stdTargetX := 1916
-    stdTargetY := 1471
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-
-    stdCkptX := [837, 951]
-    stdCkptY := [1407, 1762]
-    desiredColor := ["0xF8FCFE", "0xF8FCFE"]
-
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "选择关卡失败！"
-            ExitApp
-        }
-    }
-    */
 
     ;点击进入战斗
-    stdTargetX := 2225
-    stdTargetY := 2004
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2225
+    targetY := 2004
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
 
-    stdCkptX := [1420, 2335]
-    stdCkptY := [1243, 1440]
+    checkX := [1420, 2335]
+    checkY := [1243, 1440]
     desiredColor := ["0xFFFFFF", "0xFE0203"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        ;UserClick(stdTargetX, stdTargetY - 300, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        ;UserClick(targetX, targetY - 300, scrRatio)
         CheckAutoBattle()
         Sleep sleepTime
         if A_Index > waitTolerance * 2 {
@@ -1813,19 +1412,19 @@ SimulationRoom()
         }
     }
 
-    stdTargetX := 1898
-    stdTargetY := 1996
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1898
+    targetY := 1996
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2115]
-    stdCkptY := [1305]
+    checkX := [2115]
+    checkY := [1305]
     stdCkptX2 := [2115]
     stdCkptY2 := [1556]
     desiredColor := ["0xEFF3F5"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) && !UserCheckColor(stdCkptX2, stdCkptY2, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) && !UserCheckColor(stdCkptX2, stdCkptY2, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "模拟室结束异常！"
@@ -1838,91 +1437,32 @@ SimulationRoom()
     }
 
     ;点击模拟结束
-    stdTargetX := 1923
-    stdTargetY := 1276
+    targetX := 1923
+    targetY := 1276
     if UserCheckColor(stdCkptX2, stdCkptY2, desiredColor, scrRatio) {
-        stdTargetX := 1923
-        stdTargetY := 1552
+        targetX := 1923
+        targetY := 1552
     }
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    /*
-    stdTargetX := 1902
-    stdTargetY := 1461
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-    */
-
-    ;点击不选择和确定
-    /*
-    tX := 2104
-    tY := 1656
-    desiredColor := ["0x089FE4"]
-
-    while !UserCheckColor([tX], [tY], desiredColor, scrRatio) {
-        tY := tY + 65
-        if tY > 2160 {
-            MsgBox "模拟室结束异常！"
-            ExitApp
-        }
-    }
-
-    ;MsgBox "点不选择"
-    stdTargetX := 2185
-    stdTargetY := tY - 200
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-
-    ;MsgBox "点击确定"
-    stdTargetX := 2185
-    stdTargetY := tY
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-
-    stdCkptX := [2104]
-    stdCkptY := [tY]
-    desiredColor := ["0x089FE4"]
-
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "模拟室结束异常！"
-            ExitApp
-        }
-    }
-
-    stdTargetX := 2191
-    stdTargetY := 1349
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-    */
 
     ;退回大厅
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
@@ -1937,17 +1477,17 @@ SimulationRoom()
 RookieArena(times)
 {
     ;进入方舟
-    stdTargetX := 2689
-    stdTargetY := 1463
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2689
+    targetY := 1463
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -1955,11 +1495,11 @@ RookieArena(times)
         }
     }
 
-    stdCkptX := [1605]
-    stdCkptY := [280]
+    checkX := [1605]
+    checkY := [280]
     desiredColor := ["0x01D4F6"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -1971,34 +1511,34 @@ RookieArena(times)
     if sleepTime < 1500
         Sleep 1000
 
-    stdTargetX := 2278
-    stdTargetY := 1092
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2278
+    targetY := 1092
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdTargetX := 2129
-    stdTargetY := 1920
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2129
+    targetY := 1920
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
     ;进入竞技场
-    ; stdTargetX := 2208
-    ; stdTargetY := 1359
-    ; UserClick(stdTargetX, stdTargetY, scrRatio)
+    ; targetX := 2208
+    ; targetY := 1359
+    ; UserClick(targetX, targetY, scrRatio)
     ; Sleep sleepTime
 
-    ; stdCkptX := [1605]
-    ; stdCkptY := [280]
+    ; checkX := [1605]
+    ; checkY := [280]
     ; desiredColor := ["0x01D4F6"]
 
-    ; while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-    ;     UserClick(stdTargetX, stdTargetY, scrRatio)
+    ; while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+    ;     UserClick(targetX, targetY, scrRatio)
     ;     Sleep sleepTime
     ;     if A_Index > waitTolerance {
     ;         MsgBox "进入竞技场失败！"
@@ -2007,11 +1547,11 @@ RookieArena(times)
     ; }
 
     
-    ; stdCkptX := [1683]
-    ; stdCkptY := [606]
+    ; checkX := [1683]
+    ; checkY := [606]
     ; desiredColor := ["0xF7FCFE"]
 
-    ; while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    ; while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
     ;     Sleep sleepTime
     ;     if A_Index > waitTolerance {
     ;         MsgBox "进入竞技场失败！"
@@ -2021,32 +1561,32 @@ RookieArena(times)
     
 
     ;进入新人竞技场
-    stdTargetX := 1647
-    stdTargetY := 1164
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1647
+    targetY := 1164
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [784]
-    stdCkptY := [1201]
+    checkX := [784]
+    checkY := [1201]
     desiredColor := ["0xF8FCFE"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
         if A_Index > 5 {
             ;退回大厅
-            stdTargetX := 333
-            stdTargetY := 2041
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 333
+            targetY := 2041
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [64]
-            stdCkptY := [470]
+            checkX := [64]
+            checkY := [470]
             desiredColor := ["0xFAA72C"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime
                 if A_Index > waitTolerance {
                     MsgBox "退回大厅失败！"
@@ -2065,17 +1605,17 @@ RookieArena(times)
 
     loop times {
         ;点击进入战斗
-        stdTargetX := 2371
-        stdTargetY := 1847
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 2371
+        targetY := 1847
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [2700]
-        stdCkptY := [1691]
+        checkX := [2700]
+        checkY := [1691]
         desiredColor := ["0xF7FCFE"]
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "选择对手失败！"
@@ -2084,17 +1624,17 @@ RookieArena(times)
         }
 
         ;点击进入战斗
-        stdTargetX := 2123
-        stdTargetY := 1784
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 2123
+        targetY := 1784
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [2784]
-        stdCkptY := [1471]
+        checkX := [2784]
+        checkY := [1471]
         desiredColor := ["0xF8FCFD"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "新人竞技场作战失败！"
@@ -2104,17 +1644,17 @@ RookieArena(times)
     }
 
     ;退回大厅
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
@@ -2126,25 +1666,25 @@ RookieArena(times)
 ;=============================================================
 ;8: 对前n位nikke进行好感度咨询(可以通过收藏把想要咨询的nikke排到前面)
 NotAllCollection() {
-    stdCkptX := [2447]
-    stdCkptY := [1464]
+    checkX := [2447]
+    checkY := [1464]
     desiredColor := ["0x444547"]
-    return UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+    return UserCheckColor(checkX, checkY, desiredColor, scrRatio)
 }
 
 LoveTalking(times) {
     ;进入妮姬列表
-    stdTargetX := 1497
-    stdTargetY := 2004
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1497
+    targetY := 2004
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入妮姬列表失败！"
@@ -2152,11 +1692,11 @@ LoveTalking(times) {
         }
     }
 
-    stdCkptX := [1466, 1814]
-    stdCkptY := [428, 433]
+    checkX := [1466, 1814]
+    checkY := [428, 433]
     desiredColor := ["0x3B3C3E", "0x3B3C3E"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入妮姬列表失败！"
@@ -2165,29 +1705,29 @@ LoveTalking(times) {
     }
 
     ;进入咨询页面
-    stdTargetX := 3308
-    stdTargetY := 257
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 3308
+    targetY := 257
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1650]
-    stdCkptY := [521]
+    checkX := [1650]
+    checkY := [521]
     desiredColor := ["0x14B0F5"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         ;如果没次数了，直接退出
-        if UserCheckColor(stdCkptX, stdCkptY, ["0xE0E0E2"], scrRatio) {
-            stdTargetX := 333
-            stdTargetY := 2041
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        if UserCheckColor(checkX, checkY, ["0xE0E0E2"], scrRatio) {
+            targetX := 333
+            targetY := 2041
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [64]
-            stdCkptY := [470]
+            checkX := [64]
+            checkY := [470]
             desiredColor := ["0xFAA72C"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime
                 if A_Index > waitTolerance {
                     MsgBox "退回大厅失败！"
@@ -2196,7 +1736,7 @@ LoveTalking(times) {
             }
             return
         }
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入咨询页面失败！"
@@ -2205,17 +1745,17 @@ LoveTalking(times) {
     }
 
     ;点进第一个妮姬
-    stdTargetX := 736
-    stdTargetY := 749
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 736
+    targetY := 749
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1504]
-    stdCkptY := [1747]
+    checkX := [1504]
+    checkY := [1747]
     desiredColor := ["0xF99F22"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入妮姬咨询页面失败！"
@@ -2224,24 +1764,24 @@ LoveTalking(times) {
     }
 
     loop times {
-        stdCkptX := [1994]
-        stdCkptY := [1634]
+        checkX := [1994]
+        checkY := [1634]
         desiredColor := ["0xFA6E34"]
 
         ;如果能够快速咨询
-        if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) && !(isCheckedLongTalk && NotAllCollection()) {
+        if UserCheckColor(checkX, checkY, desiredColor, scrRatio) && !(isCheckedLongTalk && NotAllCollection()) {
             ;点击快速咨询
-            stdTargetX := 2175
-            stdTargetY := 1634
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2175
+            targetY := 1634
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [1994]
-            stdCkptY := [1634]
+            checkX := [1994]
+            checkY := [1634]
             desiredColor := ["0xFA6E34"]
 
-            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime
                 if A_Index > waitTolerance {
                     MsgBox "进入妮姬咨询页面失败！"
@@ -2250,17 +1790,17 @@ LoveTalking(times) {
             }
 
             ;点击确定
-            stdTargetX := 2168
-            stdTargetY := 1346
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+            targetX := 2168
+            targetY := 1346
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
 
-            stdCkptX := [1504]
-            stdCkptY := [1747]
+            checkX := [1504]
+            checkY := [1747]
             desiredColor := ["0xF99F22"]
 
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime
                 if A_Index > waitTolerance {
                     MsgBox "快速咨询失败！"
@@ -2270,21 +1810,21 @@ LoveTalking(times) {
         }
         else {
             ;如果不能快速咨询
-            stdCkptX := [1982]
-            stdCkptY := [1819]
+            checkX := [1982]
+            checkY := [1819]
             desiredColor := ["0x4A4A4C"]
-            if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                stdTargetX := 2168
-                stdTargetY := 1777
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+            if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                targetX := 2168
+                targetY := 1777
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime
 
-                stdCkptX := [1504]
-                stdCkptY := [1747]
+                checkX := [1504]
+                checkY := [1747]
                 desiredColor := ["0xF99F22"]
 
-                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                    UserClick(targetX, targetY, scrRatio)
                     Sleep sleepTime
                     if A_Index > waitTolerance {
                         MsgBox "咨询失败！"
@@ -2293,17 +1833,17 @@ LoveTalking(times) {
                 }
 
                 ;点击确认
-                stdTargetX := 2192
-                stdTargetY := 1349
-                UserClick(stdTargetX, stdTargetY, scrRatio)
+                targetX := 2192
+                targetY := 1349
+                UserClick(targetX, targetY, scrRatio)
                 Sleep sleepTime
 
-                stdCkptX := [2109]
-                stdCkptY := [1342]
+                checkX := [2109]
+                checkY := [1342]
                 desiredColor := ["0x00A0EB"]
 
-                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+                    UserClick(targetX, targetY, scrRatio)
                     Sleep sleepTime
                     if A_Index > waitTolerance {
                         MsgBox "咨询失败！"
@@ -2311,17 +1851,17 @@ LoveTalking(times) {
                     }
                 }
 
-                stdCkptX := [1504]
-                stdCkptY := [1747]
+                checkX := [1504]
+                checkY := [1747]
                 desiredColor := ["0xF99F22"]
-                stdTargetX := 1903
-                stdTargetY := 1483
+                targetX := 1903
+                targetY := 1483
 
-                while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
                     if Mod(A_Index, 2) == 0
-                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        UserClick(targetX, targetY, scrRatio)
                     else
-                        UserClick(stdTargetX, 1625, scrRatio)
+                        UserClick(targetX, 1625, scrRatio)
                     Sleep sleepTime // 2
                     if A_Index > waitTolerance * 2 {
                         MsgBox "咨询失败！"
@@ -2335,19 +1875,19 @@ LoveTalking(times) {
             break
 
         ;翻页
-        stdTargetX := 3778
-        stdTargetY := 940
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 3778
+        targetY := 940
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [1982]
-        stdCkptY := [1819]
+        checkX := [1982]
+        checkY := [1819]
         desiredColor := ["0x4A4A4C"]
 
         numOfTalked := A_Index
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index + numOfTalked >= times + 2
                 break 2
@@ -2359,17 +1899,17 @@ LoveTalking(times) {
     }
 
     ;退回大厅
-    stdTargetX := 333
-    stdTargetY := 2041
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 333
+    targetY := 2041
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
@@ -2381,17 +1921,17 @@ LoveTalking(times) {
 ;=============================================================
 ;9: 爬塔一次(做每日任务)
 TribeTower() {
-    stdTargetX := 2689
-    stdTargetY := 1463
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2689
+    targetY := 1463
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -2399,11 +1939,11 @@ TribeTower() {
         }
     }
 
-    stdCkptX := [1605]
-    stdCkptY := [280]
+    checkX := [1605]
+    checkY := [280]
     desiredColor := ["0x01D4F6"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -2412,17 +1952,17 @@ TribeTower() {
     }
 
     ;进入无限之塔
-    stdTargetX := 2278
-    stdTargetY := 776
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2278
+    targetY := 776
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2405]
-    stdCkptY := [1014]
+    checkX := [2405]
+    checkY := [1014]
     desiredColor := ["0xF8FBFE"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入无限之塔失败！"
@@ -2430,17 +1970,17 @@ TribeTower() {
         }
     }
 
-    stdTargetX := 1953
-    stdTargetY := 934
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1953
+    targetY := 934
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2129, 2305]
-    stdCkptY := [1935, 1935]
+    checkX := [2129, 2305]
+    checkY := [1935, 1935]
     desiredColor := ["0x2E77C2", "0x2E77C2"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "选择作战失败！"
@@ -2448,17 +1988,17 @@ TribeTower() {
         }
     }
 
-    stdTargetX := 2242
-    stdTargetY := 2001
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2242
+    targetY := 2001
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2129, 2305]
-    stdCkptY := [1935, 1935]
+    checkX := [2129, 2305]
+    checkY := [1935, 1935]
     desiredColor := ["0x2E77C2", "0x2E77C2"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入作战失败！"
@@ -2467,14 +2007,14 @@ TribeTower() {
     }
 
     ;按esc
-    stdCkptX := [2065]
-    stdCkptY := [1954]
+    checkX := [2065]
+    checkY := [1954]
     desiredColor := ["0x238CFD"]
-    stdTargetX := 3780
-    stdTargetY := 75
+    targetX := 3780
+    targetY := 75
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "按esc失败！"
@@ -2483,14 +2023,14 @@ TribeTower() {
     }
 
     ;按放弃战斗
-    stdCkptX := [2065]
-    stdCkptY := [1954]
+    checkX := [2065]
+    checkY := [1954]
     desiredColor := ["0x238CFD"]
-    stdTargetX := 1678
-    stdTargetY := 1986
+    targetX := 1678
+    targetY := 1986
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "放弃战斗失败！"
@@ -2499,17 +2039,17 @@ TribeTower() {
     }
 
     ;退回大厅
-    stdTargetX := 301
-    stdTargetY := 2030
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 301
+    targetY := 2030
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
@@ -2520,23 +2060,23 @@ TribeTower() {
 
 ;=============================================================
 MissionCompleted() {
-    stdCkptX := [3451, 3756]
-    stdCkptY := [2077, 2075]
+    checkX := [3451, 3756]
+    checkY := [2077, 2075]
     desiredColor := ["0x00A1FF", "0x00A1FF"]
 
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio)
         return true
     else
         return false
 }
 
 MissionFailed() {
-    stdCkptX := [2306, 1920, 1590, 1560]
-    stdCkptY := [702, 1485, 1489, 1473]
+    checkX := [2306, 1920, 1590, 1560]
+    checkY := [702, 1485, 1489, 1473]
     desiredColor1 := ["0xB71013", "0xE9E9E7", "0x161515", "0xE9E9E7"]
     desiredColor2 := ["0xAD080B", "0xE9E9E7", "0x161515", "0xE9E9E7"]
 
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor1, scrRatio) or UserCheckColor(stdCkptX, stdCkptY, desiredColor2,
+    if UserCheckColor(checkX, checkY, desiredColor1, scrRatio) or UserCheckColor(checkX, checkY, desiredColor2,
         scrRatio)
         return true
     else
@@ -2544,11 +2084,11 @@ MissionFailed() {
 }
 
 MissionEnded() {
-    stdCkptX := [3494, 3721, 3526, 3457, 3339, 3407]
-    stdCkptY := [2086, 2093, 2033, 2043, 2040, 2043]
+    checkX := [3494, 3721, 3526, 3457, 3339, 3407]
+    checkY := [2086, 2093, 2033, 2043, 2040, 2043]
     desiredColor := ["0x6F6F6F", "0x6F6F6F", "0x030303", "0x434343", "0xE6E6E6", "0x000000"]
 
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio)
         return true
     else
         return false
@@ -2569,17 +2109,17 @@ CompanyTowerInfo() {
 
 ;10: 企业塔
 CompanyTower() {
-    stdTargetX := 2689
-    stdTargetY := 1463
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2689
+    targetY := 1463
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -2587,11 +2127,11 @@ CompanyTower() {
         }
     }
 
-    stdCkptX := [1605]
-    stdCkptY := [280]
+    checkX := [1605]
+    checkY := [280]
     desiredColor := ["0x01D4F6"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -2600,17 +2140,17 @@ CompanyTower() {
     }
 
     ;进入无限之塔
-    stdTargetX := 2278
-    stdTargetY := 776
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2278
+    targetY := 776
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2405]
-    stdCkptY := [1014]
+    checkX := [2405]
+    checkY := [1014]
     desiredColor := ["0xF8FBFE"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入无限之塔失败！"
@@ -2629,19 +2169,19 @@ CompanyTower() {
     loop targX.Length {
         i := A_Index
 
-        stdTargetX := targX[i]
-        stdTargetY := targY[i]
-        stdCkptX := [ckptX[i]]
-        stdCkptY := [ckptY[i]]
+        targetX := targX[i]
+        targetY := targY[i]
+        checkX := [ckptX[i]]
+        checkY := [ckptY[i]]
         desiredColor := ["0x00AAF4"]
 
         ;如果未开放，则检查下一个企业
-        if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+        if !UserCheckColor(checkX, checkY, desiredColor, scrRatio)
             continue
 
         ;点击进入企业塔
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "进入企业塔失败！"
@@ -2650,11 +2190,11 @@ CompanyTower() {
         }
 
         ;直到成功进入企业塔
-        stdCkptX := [3738]
-        stdCkptY := [447]
+        checkX := [3738]
+        checkY := [447]
         desiredColor := ["0xF8FCFE"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "进入企业塔失败！"
@@ -2663,15 +2203,15 @@ CompanyTower() {
         }
 
         ;进入关卡页面
-        stdTargetX := 1918
-        stdTargetY := 919
+        targetX := 1918
+        targetY := 919
 
-        stdCkptX := [992]
-        stdCkptY := [2011]
+        checkX := [992]
+        checkY := [2011]
         desiredColor := ["0x000000"]
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "进入企业塔关卡页面失败！"
@@ -2681,22 +2221,22 @@ CompanyTower() {
 
         ;如果战斗次数已经用完
         Sleep 1000
-        stdCkptX := [2038]
-        stdCkptY := [2057]
+        checkX := [2038]
+        checkY := [2057]
         desiredColor := ["0x4D4E50"]
-        if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            stdCkptX := [3738]
-            stdCkptY := [447]
+        if UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            checkX := [3738]
+            checkY := [447]
             desiredColor := ["0xF8FCFE"]
-            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
                 Send "{Escape}"
                 Sleep sleepTime
             }
 
-            stdCkptX := [2405]
-            stdCkptY := [1014]
+            checkX := [2405]
+            checkY := [1014]
             desiredColor := ["0xF8FBFE"]
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio)
                 Sleep sleepTime
 
             Sleep 1500
@@ -2704,13 +2244,13 @@ CompanyTower() {
         }
 
         ;点击进入战斗
-        stdTargetX := 2249
-        stdTargetY := 1997
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 2249
+        targetY := 1997
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
         ;等待战斗结束
@@ -2752,10 +2292,10 @@ WaitForBattleEnd:
                 Sleep sleepTime
             }
 
-            stdCkptX := [3738]
-            stdCkptY := [447]
+            checkX := [3738]
+            checkY := [447]
             desiredColor := ["0xF8FCFE"]
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
                 UserClick(3666, 1390, scrRatio)
                 Sleep sleepTime
                 if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
@@ -2765,7 +2305,7 @@ WaitForBattleEnd:
             }
 
             Sleep 5000
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
                 UserClick(3666, 1390, scrRatio)
                 Sleep sleepTime
                 if UserCheckColor([2088], [1327], ["0x00A0EB"], scrRatio) {
@@ -2774,15 +2314,15 @@ WaitForBattleEnd:
                 }
             }
 
-            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
                 Send "{Escape}"
                 Sleep sleepTime
             }
 
-            stdCkptX := [2405]
-            stdCkptY := [1014]
+            checkX := [2405]
+            checkY := [1014]
             desiredColor := ["0xF8FBFE"]
-            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+            while !UserCheckColor(checkX, checkY, desiredColor, scrRatio)
                 Sleep sleepTime
 
             Sleep 1500
@@ -2799,17 +2339,17 @@ WaitForBattleEnd:
     }
 
     ;退回大厅
-    stdTargetX := 301
-    stdTargetY := 2030
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 301
+    targetY := 2030
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
@@ -2821,17 +2361,17 @@ WaitForBattleEnd:
 ;=============================================================
 ;11: 进入异拦
 Interception() {
-    stdTargetX := 2689
-    stdTargetY := 1463
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2689
+    targetY := 1463
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime // 2
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -2839,11 +2379,11 @@ Interception() {
         }
     }
 
-    stdCkptX := [1605]
-    stdCkptY := [280]
+    checkX := [1605]
+    checkY := [280]
     desiredColor := ["0x01D4F6"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入方舟失败！"
@@ -2852,17 +2392,17 @@ Interception() {
     }
 
     ;进入拦截战
-    stdTargetX := 1781
-    stdTargetY := 1719
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1781
+    targetY := 1719
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1605]
-    stdCkptY := [280]
+    checkX := [1605]
+    checkY := [280]
     desiredColor := ["0x01D4F6"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入拦截战失败！"
@@ -2870,68 +2410,49 @@ Interception() {
         }
     }
 
-    /*
-    ;不勾选自动拦截就直接退出
-    if !isCheckedInterception
-        return
-    */
 
-    /*
-    stdCkptX := [1917]
-    stdCkptY := [910]
-    desiredColor := ["0x037EF9"]
-    
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "进入拦截战失败！"
-            ExitApp
-        }
-    }
-    */
-
-    stdTargetX := 559
-    stdTargetY := 1571
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 559
+    targetY := 1571
+    UserClick(targetX, targetY, scrRatio)
     Sleep 1000
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep 1000
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    UserClick(targetX, targetY, scrRatio)
     Sleep 1000
 
     ;选择BOSS
     switch InterceptionBoss {
         case 1:
-            stdTargetX := 1556
-            stdTargetY := 886
-            stdCkptX := [1907]
-            stdCkptY := [898]
+            targetX := 1556
+            targetY := 886
+            checkX := [1907]
+            checkY := [898]
             desiredColor := ["0xFA910E"]
 
         case 2:
-            stdTargetX := 2279
-            stdTargetY := 1296
-            stdCkptX := [1923]
-            stdCkptY := [908]
+            targetX := 2279
+            targetY := 1296
+            checkX := [1923]
+            checkY := [908]
             desiredColor := ["0xFB01F1"]
 
         case 3:
-            stdCkptX := [1917]
-            stdCkptY := [910]
+            checkX := [1917]
+            checkY := [910]
             desiredColor := ["0x037EF9"]
 
         case 4:
-            stdTargetX := 2281
-            stdTargetY := 899
-            stdCkptX := [1916]
-            stdCkptY := [907]
+            targetX := 2281
+            targetY := 899
+            checkX := [1916]
+            checkY := [907]
             desiredColor := ["0x00F556"]
 
         case 5:
-            stdTargetX := 1551
-            stdTargetY := 1299
-            stdCkptX := [1919]
-            stdCkptY := [890]
+            targetX := 1551
+            targetY := 1299
+            checkX := [1919]
+            checkY := [890]
             desiredColor := ["0xFD000F"]
 
         default:
@@ -2939,23 +2460,11 @@ Interception() {
             ExitApp
     }
 
-    /*
-    if InterceptionBoss != 3 {
-        while UserCheckColor([1917], [910], ["0x037EF9"], scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-            if A_Index > waitTolerance {
-                MsgBox "选择BOSS失败！"
-                ExitApp
-            }
-        }
-    }
-    */
-    stdTargetX := 1556
-    stdTargetY := 886
+    targetX := 1556
+    targetY := 886
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep 2000
         if A_Index > waitTolerance {
             MsgBox "选择BOSS失败！"
@@ -2965,17 +2474,17 @@ Interception() {
 
     ;点击挑战按钮
     if UserCheckColor([1735], [1730], ["0x28282A"], scrRatio) {
-        stdTargetX := 301
-        stdTargetY := 2030
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+        targetX := 301
+        targetY := 2030
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        stdCkptX := [64]
-        stdCkptY := [470]
+        checkX := [64]
+        checkY := [470]
         desiredColor := ["0xFAA72C"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "退回大厅失败！"
@@ -2985,30 +2494,15 @@ Interception() {
         return
     }
 
-    stdTargetX := 1924
-    stdTargetY := 1779
+    targetX := 1924
+    targetY := 1779
 
-    /*
-    stdCkptX := [1735]
-    stdCkptY := [1730]
-    desiredColor := [""]
-    
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "点击挑战失败！"
-            ExitApp
-        }
-    }
-    */
-
-    stdCkptX := [1390]
-    stdCkptY := [1799]
+    checkX := [1390]
+    checkY := [1799]
     desiredColor := ["0x01AEF3"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "点击挑战失败！"
@@ -3019,34 +2513,34 @@ Interception() {
     ;选择编队
     switch InterceptionBoss {
         case 1:
-            stdTargetX := 1882
-            stdTargetY := 1460
-            stdCkptX := [1843]
-            stdCkptY := [1428]
+            targetX := 1882
+            targetY := 1460
+            checkX := [1843]
+            checkY := [1428]
 
         case 2:
-            stdTargetX := 2020
-            stdTargetY := 1460
-            stdCkptX := [1981]
-            stdCkptY := [1428]
+            targetX := 2020
+            targetY := 1460
+            checkX := [1981]
+            checkY := [1428]
 
         case 3:
-            stdTargetX := 2151
-            stdTargetY := 1460
-            stdCkptX := [2113]
-            stdCkptY := [1428]
+            targetX := 2151
+            targetY := 1460
+            checkX := [2113]
+            checkY := [1428]
 
         case 4:
-            stdTargetX := 2282
-            stdTargetY := 1460
-            stdCkptX := [2248]
-            stdCkptY := [1428]
+            targetX := 2282
+            targetY := 1460
+            checkX := [2248]
+            checkY := [1428]
 
         case 5:
-            stdTargetX := 2421
-            stdTargetY := 1460
-            stdCkptX := [2380]
-            stdCkptY := [1428]
+            targetX := 2421
+            targetY := 1460
+            checkX := [2380]
+            checkY := [1428]
 
         default:
             MsgBox "BOSS选择错误！"
@@ -3054,8 +2548,8 @@ Interception() {
     }
 
     desiredColor := ["0x02ADF5"]
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep 1500
         if A_Index > waitTolerance {
             MsgBox "选择编队失败！"
@@ -3064,19 +2558,19 @@ Interception() {
     }
 
     ;如果不能快速战斗，就进入战斗
-    stdCkptX := [1964]
-    stdCkptY := [1800]
+    checkX := [1964]
+    checkY := [1800]
     desiredColor := ["0xF96B2F"]
 
-    if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        stdTargetX := 2219
-        stdTargetY := 1992
-        stdCkptX := [1962]
-        stdCkptY := [1932]
+    if !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        targetX := 2219
+        targetY := 1992
+        checkX := [1962]
+        checkY := [1932]
         desiredColor := ["0xD52013"]
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "进入战斗失败！"
@@ -3085,13 +2579,13 @@ Interception() {
         }
 
         ;退出结算页面
-        stdTargetX := 904
-        stdTargetY := 1805
-        stdCkptX := [3731, 3713, 3638]
-        stdCkptY := [2040, 2034, 2091]
+        targetX := 904
+        targetY := 1805
+        checkX := [3731, 3713, 3638]
+        checkY := [2040, 2034, 2091]
         desiredColor := ["0xE6E6E6", "0xE6E6E6", "0x000000"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
             CheckAutoBattle()
             Sleep sleepTime
             if A_Index > waitTolerance * 20 {
@@ -3100,8 +2594,8 @@ Interception() {
             }
         }
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "退出结算页面失败！"
@@ -3111,11 +2605,11 @@ Interception() {
     }
 
     ;检查是否退出
-    stdCkptX := [1390]
-    stdCkptY := [1799]
+    checkX := [1390]
+    checkY := [1799]
     desiredColor := ["0x01AEF3"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退出结算页面失败！"
@@ -3124,18 +2618,18 @@ Interception() {
     }
 
     ;快速战斗
-    stdTargetX := 2229
-    stdTargetY := 1842
-    stdCkptX := [1964]
-    stdCkptY := [1800]
+    targetX := 2229
+    targetY := 1842
+    checkX := [1964]
+    checkY := [1800]
     desiredColor := ["0xF96B2F"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "快速战斗失败！"
@@ -3144,13 +2638,13 @@ Interception() {
         }
 
         ;退出结算页面
-        stdTargetX := 904
-        stdTargetY := 1805
-        stdCkptX := [2232, 2391, 2464]
-        stdCkptY := [2100, 2099, 2051]
+        targetX := 904
+        targetY := 1805
+        checkX := [2232, 2391, 2464]
+        checkY := [2100, 2099, 2051]
         desiredColor := ["0x000000", "0x000000", "0x000000"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "快速战斗结算失败！"
@@ -3158,45 +2652,22 @@ Interception() {
             }
         }
 
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
+        while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+            UserClick(targetX, targetY, scrRatio)
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "退出结算页面失败！"
                 ExitApp
             }
         }
-        /*
-        stdTargetX := 904
-        stdTargetY := 1805
-        stdCkptX := [1893, 1913, 1933]
-        stdCkptY := [1951, 1948, 1956]
-        desiredColor := ["0xFFFFFF", "0xFFFFFF", "0xFFFFFF"]
         
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            Sleep sleepTime
-            if A_Index > waitTolerance {
-                MsgBox "快速战斗结算失败！"
-                ExitApp
-            }
-        }
-        
-        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-            UserClick(stdTargetX, stdTargetY, scrRatio)
-            Sleep sleepTime
-            if A_Index > waitTolerance {
-                MsgBox "退出结算页面失败！"
-                ExitApp
-            }
-        }
-        */
 
         ;检查是否退出
-        stdCkptX := [1390]
-        stdCkptY := [1799]
+        checkX := [1390]
+        checkY := [1799]
         desiredColor := ["0x01AEF3"]
 
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
             Sleep sleepTime
             if A_Index > waitTolerance {
                 MsgBox "退出结算页面失败！"
@@ -3206,69 +2677,48 @@ Interception() {
 
         Sleep 1000
 
-        stdTargetX := 2229
-        stdTargetY := 1842
-        stdCkptX := [1964]
-        stdCkptY := [1800]
+        targetX := 2229
+        targetY := 1842
+        checkX := [1964]
+        checkY := [1800]
         desiredColor := ["0xF96B2F"]
     }
 
     ;退回大厅
-    stdTargetX := 301
-    stdTargetY := 2030
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 301
+    targetY := 2030
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退回大厅失败！"
             ExitApp
         }
     }
-
-    ;进入特殊拦截战
-    /*
-    stdTargetX := 2059
-    stdTargetY := 1689
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-    
-    stdCkptX := [1425]
-    stdCkptY := [1852]
-    desiredColor := ["0x02AEF5"]
-    
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
-        if A_Index > waitTolerance {
-            MsgBox "进入特殊拦截战失败！"
-            ExitApp
-        }
-    }
-    */
 }
 
 ;=============================================================
 
 ;11: 邮箱收取
 Mail() {
-    stdTargetX := 3667
-    stdTargetY := 81
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 3667
+    targetY := 81
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;检测大厅点邮箱
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;检测大厅点邮箱
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入邮箱失败！"
@@ -3276,24 +2726,24 @@ Mail() {
         }
     }
 
-    stdCkptX := [2085]
-    stdCkptY := [1809]
+    checkX := [2085]
+    checkY := [1809]
     desiredColor := ["0xCAC7C4"] ;检测灰色的领取按钮
-    stdTargetX := 2085
-    stdTargetY := 1809
+    targetX := 2085
+    targetY := 1809
     ;Sleep sleepTime ;加载容错
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;不是灰色就一直点全部领取
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;不是灰色就一直点全部领取
         Sleep sleepTime
     }
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
-    stdTargetX := 2394
-    stdTargetY := 291
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;确认领取+返回直到回到大厅
+    targetX := 2394
+    targetY := 291
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;确认领取+返回直到回到大厅
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退出邮箱失败！"
@@ -3306,25 +2756,25 @@ Mail() {
 
 ;12: 任务收取
 Mission() {
-    stdTargetX := 3341
-    stdTargetY := 206
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 3341
+    targetY := 206
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;检测大厅点任务
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;检测大厅点任务
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入任务失败！"
             ExitApp
         }
     }
-    stdTargetX := 2286
-    stdTargetY := 1935
+    targetX := 2286
+    targetY := 1935
     x0 := 1512 ;用于遍历任务
     y0 := 395
 
@@ -3335,12 +2785,12 @@ Mission() {
         if !UserCheckColor([1365, 2087], [1872, 1997], ["0xF5F5F5", "0xF5F5F5"], scrRatio) { ;退出
             break
         }
-        stdCkptX := [2276]
-        stdCkptY := [1899]
+        checkX := [2276]
+        checkY := [1899]
         desiredColor := ["0x7B7C7B"]
-        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) { ;如果不是灰色就点
+        while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) { ;如果不是灰色就点
             Sleep sleepTime
-            UserClick(stdTargetX, stdTargetY, scrRatio) ;点领取
+            UserClick(targetX, targetY, scrRatio) ;点领取
         }
         x0 := x0 + 280 ;向右切换标题
     }
@@ -3353,26 +2803,26 @@ Mission() {
 
 Pass() {
     OnePass()
-    stdCkptX := [3395]
-    stdCkptY := [368]
+    checkX := [3395]
+    checkY := [368]
     stdCkptY1 := [468] ;活动可能偏移
     desiredColor := ["0xFBFFFF"] ;白色的轮换按钮
-    stdTargetX := 3395
-    stdTargetY := 368
+    targetX := 3395
+    targetY := 368
     stdTargetY1 := 468
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {  ;如果轮换按钮存在
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio) {  ;如果轮换按钮存在
         global PassRound
         PassRound := 0
         while (PassRound < 2) {
-            userClick(stdTargetX, stdTargetY, scrRatio) ;转一下
+            userClick(targetX, targetY, scrRatio) ;转一下
             Sleep sleepTime
             PassRound := PassRound + 1
-            stdCkptX := [3437]
-            stdCkptY := [338]
+            checkX := [3437]
+            checkY := [338]
             desiredColor := ["0xFE1809"] ;红点
-            if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) { ;如果转出红点
+            if UserCheckColor(checkX, checkY, desiredColor, scrRatio) { ;如果转出红点
                 Sleep sleepTime
-                userClick(stdTargetX, stdTargetY, scrRatio) ;再转一下
+                userClick(targetX, targetY, scrRatio) ;再转一下
                 Sleep sleepTime
                 OnePass()
                 break
@@ -3381,19 +2831,19 @@ Pass() {
 
     }
 
-    if UserCheckColor(stdCkptX, stdCkptY1, desiredColor, scrRatio) {  ;检测是否偏移
+    if UserCheckColor(checkX, stdCkptY1, desiredColor, scrRatio) {  ;检测是否偏移
         global PassRound
         PassRound := 0
         while (PassRound < 2) {
-            userClick(stdTargetX, stdTargetY1, scrRatio) ;转一下
+            userClick(targetX, stdTargetY1, scrRatio) ;转一下
             Sleep sleepTime
             PassRound := PassRound + 1
-            stdCkptX := [3437]
-            stdCkptY := [438]
+            checkX := [3437]
+            checkY := [438]
             desiredColor := ["0xFE1809"] ;红点
-            if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) { ;如果转出红点
+            if UserCheckColor(checkX, checkY, desiredColor, scrRatio) { ;如果转出红点
                 Sleep sleepTime
-                userClick(stdTargetX, stdTargetY1, scrRatio) ;再转一下
+                userClick(targetX, stdTargetY1, scrRatio) ;再转一下
                 Sleep sleepTime
                 OnePass()
                 break
@@ -3405,17 +2855,17 @@ Pass() {
 }
 
 OnePass() { ;执行一次通行证
-    stdTargetX := 3633
-    stdTargetY := 405
-    UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 3633
+    targetY := 405
+    UserClick(targetX, targetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
 
-    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;检测大厅点通行证
+    while UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;检测大厅点通行证
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "进入通行证失败！"
@@ -3423,65 +2873,65 @@ OnePass() { ;执行一次通行证
         }
     }
 
-    stdCkptX := [1733]
-    stdCkptY := [699]
+    checkX := [1733]
+    checkY := [699]
     desiredColor := ["0xF1F5F6"]
-    stdTargetX := 2130
-    stdTargetY := 699
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) { ;左不是白则点右
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 2130
+    targetY := 699
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) { ;左不是白则点右
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
     }
 
-    stdCkptX := [1824]
-    stdCkptY := [1992]
+    checkX := [1824]
+    checkY := [1992]
     desiredColor := ["0x7C7C7C"] ;检测灰色的全部领取
-    stdTargetX := 1824
-    stdTargetY := 1992
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;不是灰色就一直点领取
+    targetX := 1824
+    targetY := 1992
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;不是灰色就一直点领取
         Sleep sleepTime
     }
 
-    stdCkptX := [2130]
-    stdCkptY := [699]
+    checkX := [2130]
+    checkY := [699]
     desiredColor := ["0xF1F5F6"]
-    stdTargetX := 1733
-    stdTargetY := 699
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) { ;右不是白则点左
-        UserClick(stdTargetX, stdTargetY, scrRatio)
+    targetX := 1733
+    targetY := 699
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) { ;右不是白则点左
+        UserClick(targetX, targetY, scrRatio)
         Sleep sleepTime
     }
 
-    stdCkptX := [1824]
-    stdCkptY := [1992]
+    checkX := [1824]
+    checkY := [1992]
     desiredColor := ["0x7C7C7C"] ;检测灰色的全部领取
-    stdTargetX := 1824
-    stdTargetY := 1992
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;不是灰色就一直点领取
+    targetX := 1824
+    targetY := 1992
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;不是灰色就一直点领取
         Sleep sleepTime
     }
 
-    stdCkptX := [64]
-    stdCkptY := [470]
+    checkX := [64]
+    checkY := [470]
     desiredColor := ["0xFAA72C"]
-    stdTargetX := 2418
-    stdTargetY := 185
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio) ;确认领取+返回直到回到大厅
+    targetX := 2418
+    targetY := 185
+    while !UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
+        UserClick(targetX, targetY, scrRatio) ;确认领取+返回直到回到大厅
         Sleep sleepTime
         if A_Index > waitTolerance {
             MsgBox "退出通行证失败！"
             ExitApp
         }
     }
-    stdCkptX := [3395]
-    stdCkptY := [368]
+    checkX := [3395]
+    checkY := [368]
     desiredColor := ["0xFBFFFF"] ;检测是否多通行证
-    stdTargetX := 3395
-    stdTargetY := 368
-    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    targetX := 3395
+    targetY := 368
+    if UserCheckColor(checkX, checkY, desiredColor, scrRatio) {
 
     }
 }
