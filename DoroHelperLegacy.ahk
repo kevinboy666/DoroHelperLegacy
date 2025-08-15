@@ -14,9 +14,9 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.22"
-usr := "kyokakawaii"
-repo := "DoroHelper"
+currentVersion := "v0.1.0"
+usr := "kevinboy666"
+repo := "DoroHelperLegacy"
 
 ;utilities
 IsSimilarColor(targetColor, color) {
@@ -100,6 +100,7 @@ UserClick(sX, sY, k) {
     Send "{Click " uX " " uY "}"
 }
 
+;檢查使用者
 UserCheckColor(sX, sY, sC, k) {
     loop sX.Length {
         uX := Round(sX[A_Index] * k)
@@ -1255,6 +1256,18 @@ SimulationRoom()
             ExitApp
         }
     }
+
+    stdCkptX := [1605]
+    stdCkptY := [280]
+    desiredColor := ["0x01D4F6"]
+
+    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        Sleep sleepTime
+        if A_Index > waitTolerance {
+            MsgBox "进入方舟失败！"
+            ExitApp
+        }
+    }
     
     ;进入模拟室
     stdTargetX := 1547
@@ -1374,6 +1387,407 @@ SimulationRoom()
             ExitApp
         }
     }
+
+    /*
+    stdCkptX := [1682]
+    stdCkptY := [1863]
+    desiredColor := ["0x000000"]
+
+    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        Sleep sleepTime
+        if A_Index > waitTolerance {
+            MsgBox "开始模拟失败！"
+            ExitApp
+        }
+    }
+
+    ;1C-5C
+    loop 5 {
+        ;选择最右边的关卡
+        stdTargetX := 2255
+        stdTargetY := 1478
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime
+
+        stdCkptX := [1912]
+        stdCkptY := [1943]
+        desiredColor := ["0xF8FCFD"]
+
+        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+            if A_Index > waitTolerance {
+                MsgBox "选择关卡失败！"
+                ExitApp
+            }
+        }
+
+        stdCkptX := [2062]
+        stdCkptY := [1850]
+        desiredColor := ["0xF96F36"]
+
+        ;如果是战斗关卡
+        if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            ;点击快速战斗
+            stdTargetX := 2233
+            stdTargetY := 1854
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+
+            stdCkptX := [2062]
+            stdCkptY := [1850]
+            desiredColor := ["0xF96F36"]
+
+            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+                if A_Index > waitTolerance {
+                    MsgBox "快速战斗失败！"
+                    ExitApp
+                }
+            }
+
+            stdCkptX := [2112]
+            stdCkptY := [1808]
+            desiredColor := ["0x05A0E3"]
+
+            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) && !UserCheckColor(stdCkptX, [1808 + 79], desiredColor, scrRatio) {
+                Sleep sleepTime
+                if A_Index > waitTolerance {
+                    MsgBox "快速战斗失败！"
+                    ExitApp
+                }
+            }
+
+            Sleep 2000 ;kkk
+            if sleepTime <= 1000
+                Sleep 250
+
+            ;点击不选择
+            deltaY := 0
+            stdCkptX := [1599]
+            stdCkptY := [1811 + 79]
+            desiredColor := ["0xDEE1E1"]
+            if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio)
+                deltaY := 79
+
+            ;if deltaY == 79
+            ;    MsgBox "79"
+
+            stdTargetX := 1631
+            stdTargetY := 1811 + deltaY
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+
+            stdCkptX := [2112]
+            stdCkptY := [1808 + deltaY]
+            desiredColor := ["0x05A0E3"]
+
+            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+                if A_Index > waitTolerance {
+                    MsgBox "不选择buff失败！"
+                    ExitApp
+                }
+            }
+
+            ;点击确认
+            stdTargetX := 2146
+            stdTargetY := 1349
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+
+            stdCkptX := [2081]
+            stdCkptY := [1320]
+            desiredColor := ["0x00A0EB"]
+
+            while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+                if A_Index > waitTolerance {
+                    MsgBox "不选择buff失败！"
+                    ExitApp
+                }
+            }
+        }
+        else {
+            Sleep 2000 ;kkk
+            if sleepTime <= 1000
+                Sleep 250
+
+            stdCkptX := [1636, 2053]
+            stdCkptY := [1991, 1991]
+            desiredColor := ["0xE0E2E2", "0x13A1E4"]
+    
+            ;如果是可以不选择的buff关卡
+            if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                ;点击不选择
+                stdTargetX := 1743
+                stdTargetY := 2019
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+
+                stdCkptX := [2053]
+                stdCkptY := [1991]
+                desiredColor := ["0x13A1E4"]
+
+                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                    if A_Index > waitTolerance {
+                        MsgBox "不选择buff失败！"
+                        ExitApp
+                    }
+                }
+
+                ;点击确认
+                stdTargetX := 2180
+                stdTargetY := 1346
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+
+                stdCkptX := [2080]
+                stdCkptY := [1319]
+                desiredColor := ["0x00A0EB"]
+
+                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                    if A_Index > waitTolerance {
+                        MsgBox "不选择buff失败！"
+                        ExitApp
+                    }
+                }
+
+                ;点击确认
+                stdTargetX := 1932
+                stdTargetY := 1293
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+
+                stdCkptX := [1836]
+                stdCkptY := [1260]
+                desiredColor := ["0x069FE3"]
+
+                while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                    if A_Index > waitTolerance {
+                        MsgBox "不选择buff失败！"
+                        ExitApp
+                    }
+                }
+            }
+            else {
+                ;是必须选择的关卡
+                ;选择buff
+                stdTargetX := 1885
+                stdTargetY := 1862
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime // 2
+                stdTargetX := 1904
+                stdTargetY := 1900
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+
+                if sleepTime <= 1000
+                    Sleep 1000
+
+                ;点击确认
+                stdCkptX := [1858]
+                stdCkptY := [1572]
+                desiredColor := ["0x069FE3"]
+
+                if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                    stdTargetX := 1923
+                    stdTargetY := 1589
+                    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        Sleep sleepTime
+                        if A_Index > waitTolerance {
+                            MsgBox "确认失败！"
+                            ExitApp
+                        }
+                    }
+                }
+                else {
+                    stdTargetX := 1908
+                    stdTargetY := 2016
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime // 2
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+
+                    ;不替换buff
+                    ;点击不选择和确定
+                    tX := 2104
+                    tY := 1656
+                    desiredColor := ["0x089FE4"]
+
+                    flag := true
+
+                    while !UserCheckColor([tX], [tY], desiredColor, scrRatio) {
+                        tY := tY + 65
+                        if tY > 2160 {
+                            flag := false
+                            break
+                        }
+                    }
+
+                    if !flag {
+                        /*
+                        stdTargetX := 1908
+                        stdTargetY := 2016
+                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        Sleep sleepTime // 2
+                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        Sleep sleepTime // 2
+                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        Sleep sleepTime // 2
+                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        Sleep sleepTime
+                        
+                        continue
+                    }
+
+                    ;MsgBox "点不选择"
+                    stdTargetX := 2185
+                    stdTargetY := tY - 200
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime // 2
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime // 2
+
+                    ;MsgBox "点击确定"
+                    stdTargetX := 2185
+                    stdTargetY := tY
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+
+                    stdCkptX := [2104]
+                    stdCkptY := [tY]
+                    desiredColor := ["0x089FE4"]
+
+                    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                        UserClick(stdTargetX, stdTargetY, scrRatio)
+                        Sleep sleepTime
+                        if A_Index > waitTolerance {
+                            MsgBox "模拟室结束异常！"
+                            ExitApp
+                        }
+                    }
+
+                    stdTargetX := 1908
+                    stdTargetY := 2016
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime // 2
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime // 2
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                    UserClick(stdTargetX, stdTargetY, scrRatio)
+                    Sleep sleepTime
+                }
+            }
+        }
+    }
+
+    ;6C
+    ;选择右边一个关卡
+    stdTargetX := 2084
+    stdTargetY := 1508
+    UserClick(stdTargetX, stdTargetY, scrRatio)
+    Sleep sleepTime
+
+    stdCkptX := [1921]
+    stdCkptY := [1921]
+    desiredColor := ["0x000000"]
+
+    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime
+        if A_Index > waitTolerance {
+            MsgBox "选择关卡失败！"
+            ExitApp
+        }
+    }
+
+    Sleep 1500 ;kkk
+    if sleepTime <= 1000
+        Sleep 750
+
+    stdCkptX := [1648]
+    stdCkptY := [1995]
+    desiredColor := ["0xE1E2E2"]
+
+    ;如果是属性提升
+    if UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        stdTargetX := 1711
+        stdTargetY := 2020
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime
+
+        while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+            if A_Index > waitTolerance {
+                MsgBox "不选择失败！"
+                ExitApp
+            }
+        }
+
+        stdTargetX := 2304
+        stdTargetY := 1338
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+    }
+    else {
+        ;如果是疗养室
+        stdTargetX := 1908
+        stdTargetY := 1767
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+
+        stdTargetX := 1892
+        stdTargetY := 2014
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime // 2
+    }
+
+    ;7C
+    stdTargetX := 1916
+    stdTargetY := 1471
+    UserClick(stdTargetX, stdTargetY, scrRatio)
+    Sleep sleepTime
+
+    stdCkptX := [837, 951]
+    stdCkptY := [1407, 1762]
+    desiredColor := ["0xF8FCFE", "0xF8FCFE"]
+
+    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime
+        if A_Index > waitTolerance {
+            MsgBox "选择关卡失败！"
+            ExitApp
+        }
+    }
+    */
 
     ;点击进入战斗
     stdTargetX := 2225
@@ -1541,14 +1955,28 @@ RookieArena(times)
         }
     }
 
+    stdCkptX := [1605]
+    stdCkptY := [280]
+    desiredColor := ["0x01D4F6"]
+
+    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        Sleep sleepTime
+        if A_Index > waitTolerance {
+            MsgBox "进入方舟失败！"
+            ExitApp
+        }
+    }
 
     ;收pjjc菜
-    stdTargetX := 2250
-    stdTargetY := 950
+    if sleepTime < 1500
+        Sleep 1000
+
+    stdTargetX := 2278
+    stdTargetY := 1092
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
     UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
+    Sleep sleepTime
 
     stdTargetX := 2129
     stdTargetY := 1920
@@ -1557,17 +1985,40 @@ RookieArena(times)
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
     UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
-
-    Sleep 2000
+    Sleep sleepTime
 
     ;进入竞技场
-    stdTargetX := 2278
-    stdTargetY := 1092
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
+    ; stdTargetX := 2208
+    ; stdTargetY := 1359
+    ; UserClick(stdTargetX, stdTargetY, scrRatio)
+    ; Sleep sleepTime
+
+    ; stdCkptX := [1605]
+    ; stdCkptY := [280]
+    ; desiredColor := ["0x01D4F6"]
+
+    ; while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    ;     UserClick(stdTargetX, stdTargetY, scrRatio)
+    ;     Sleep sleepTime
+    ;     if A_Index > waitTolerance {
+    ;         MsgBox "进入竞技场失败！"
+    ;         ExitApp
+    ;     }
+    ; }
+
+    
+    ; stdCkptX := [1683]
+    ; stdCkptY := [606]
+    ; desiredColor := ["0xF7FCFE"]
+
+    ; while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+    ;     Sleep sleepTime
+    ;     if A_Index > waitTolerance {
+    ;         MsgBox "进入竞技场失败！"
+    ;         ExitApp
+    ;     }
+    ; }
+    
 
     ;进入新人竞技场
     stdTargetX := 1647
@@ -1948,8 +2399,8 @@ TribeTower() {
         }
     }
 
-    stdCkptX := [1641]
-    stdCkptY := [324]
+    stdCkptX := [1605]
+    stdCkptY := [280]
     desiredColor := ["0x01D4F6"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
@@ -2136,8 +2587,8 @@ CompanyTower() {
         }
     }
 
-    stdCkptX := [1641]
-    stdCkptY := [324]
+    stdCkptX := [1605]
+    stdCkptY := [280]
     desiredColor := ["0x01D4F6"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
@@ -2388,15 +2839,26 @@ Interception() {
         }
     }
 
+    stdCkptX := [1605]
+    stdCkptY := [280]
+    desiredColor := ["0x01D4F6"]
+
+    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        Sleep sleepTime
+        if A_Index > waitTolerance {
+            MsgBox "进入方舟失败！"
+            ExitApp
+        }
+    }
 
     ;进入拦截战
-    stdTargetX := 1650
-    stdTargetY := 1610
+    stdTargetX := 1781
+    stdTargetY := 1719
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1600]
-    stdCkptY := [275]
+    stdCkptX := [1605]
+    stdCkptY := [280]
     desiredColor := ["0x01D4F6"]
 
     while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
@@ -2428,14 +2890,14 @@ Interception() {
     }
     */
 
-    ; stdTargetX := 559
-    ; stdTargetY := 1571
-    ; UserClick(stdTargetX, stdTargetY, scrRatio)
-    ; Sleep 1000
-    ; UserClick(stdTargetX, stdTargetY, scrRatio)
-    ; Sleep 1000
-    ; UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep 2000
+    stdTargetX := 559
+    stdTargetY := 1571
+    UserClick(stdTargetX, stdTargetY, scrRatio)
+    Sleep 1000
+    UserClick(stdTargetX, stdTargetY, scrRatio)
+    Sleep 1000
+    UserClick(stdTargetX, stdTargetY, scrRatio)
+    Sleep 1000
 
     ;选择BOSS
     switch InterceptionBoss {
@@ -3183,9 +3645,7 @@ ClickOnHelp(*) {
     使用说明
 
     对大多数老玩家来说Doro设置保持默认就好。
-    万一Doro失控，请按Ctrl + 1组合键结束进程。
-    万一Doro失控，请按Ctrl + 1组合键结束进程。
-    万一Doro失控，请按Ctrl + 1组合键结束进程。
+    万一Doro失控，请按Ctrl + z组合键结束进程。
 
     ############################################# 
     要求：
@@ -3214,7 +3674,7 @@ ClickOnHelp(*) {
     )"
 
 }
-
+; start point
 ClickOnDoro(*) {
     WriteSettings()
 
@@ -3235,61 +3695,57 @@ ClickOnDoro(*) {
     loop numNikke {
 
         nikkeID := WinGetIDLast(title)
-
+        WinActivate nikkeID
         WinGetClientPos , , &userScreenW, &userScreenH, nikkeID
         global scrRatio
         scrRatio := userScreenW / stdScreenW
 
-        ;nikkeID := WinWait(title)
-        WinActivate nikkeID
-
         Login() ;登陆到主界面
 
-        if isCheckedOutposeDefence
-            OutpostDefence() ;前哨基地防御奖励
+        ; if isCheckedOutposeDefence
+        ;     OutpostDefence() ;前哨基地防御奖励
 
-        if isCheckedCashShop  
-            CashShop() ;付费商店领免费钻
+        ; if isCheckedCashShop  
+        ;     CashShop() ;付费商店领免费钻
 
-        if isCheckedFreeShop 
-            FreeShop(numOfBook) ;普通商店白嫖
+        ; if isCheckedFreeShop 
+        ;     FreeShop(numOfBook) ;普通商店白嫖
 
-        if isCheckedOutposeDefence
-            OutpostDefence() ;前哨基地防御奖励*2(任务)
+        ; if isCheckedOutposeDefence
+        ;     OutpostDefence() ;前哨基地防御奖励*2(任务)
 
-        if isCheckedExpedtion
-            Expedition() ;派遣
+        ; if isCheckedExpedtion
+        ;     Expedition() ;派遣
 
-        if isCheckedFriendPoint
-            FriendPoint() ;好友点数收取
+        ; if isCheckedFriendPoint
+        ;     FriendPoint() ;好友点数收取
 
-        if isCheckedSimulationRoom
-            SimulationRoom() ;模拟室5C(不拿buff)
-
+        ; if isCheckedSimulationRoom
+        ;     SimulationRoom() ;模拟室5C(不拿buff)
 
         if isCheckedRookieArena
             RookieArena(numOfBattle) ;新人竞技场n次打第三位，顺带收50%以上的菜
 
-        if isCheckedLoveTalking
-            LoveTalking(numOfLoveTalking) ;;对前n位nikke进行好感度咨询(可以通过收藏把想要咨询的nikke排到前面)
+        ; if isCheckedLoveTalking
+        ;     LoveTalking(numOfLoveTalking) ;;对前n位nikke进行好感度咨询(可以通过收藏把想要咨询的nikke排到前面)
 
-        if isCheckedTribeTower && isCheckedCompanyTower 
-            TribeTower() ;爬塔一次(蹭每日任务)
+        ; if isCheckedTribeTower && isCheckedCompanyTower 
+        ;     TribeTower() ;爬塔一次(蹭每日任务)
 
-        if isCheckedCompanyTower && !isCheckedTribeTower
-            CompanyTower() ;爬塔
+        ; if isCheckedCompanyTower && !isCheckedTribeTower
+        ;     CompanyTower() ;爬塔
 
-        if isCheckedInterception
-            Interception() ;打异常拦截
+        ; if isCheckedInterception
+        ;     Interception() ;打异常拦截
 
-        if isCheckedMail 
-            Mail() ;邮箱收取
+        ; if isCheckedMail 
+        ;     Mail() ;邮箱收取
 
-        if isCheckedMission
-            Mission() ;每日奖励收取
+        ; if isCheckedMission
+        ;     Mission() ;每日奖励收取
 
-        if isCheckedPass
-            Pass() ;Pass收取
+        ; if isCheckedPass
+        ;     Pass() ;Pass收取
 
     }
 
