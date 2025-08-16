@@ -14,7 +14,7 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.0"
+currentVersion := "v0.1.1"
 usr := "kevinboy666"
 repo := "DoroHelperLegacy"
 
@@ -2817,7 +2817,7 @@ Pass() {
     OnePass()
     checkX := [3395]
     checkY := [368]
-    stdCkptY1 := [468] ;活动可能偏移
+    checkY1 := [468] ;活动可能偏移
     desiredColor := ["0xFBFFFF"] ;白色的轮换按钮
     targetX := 3395
     targetY := 368
@@ -2843,7 +2843,7 @@ Pass() {
 
     }
 
-    if UserCheckColor(checkX, stdCkptY1, desiredColor) {  ;检测是否偏移
+    if UserCheckColor(checkX, checkY1, desiredColor) {  ;检测是否偏移
         global PassRound
         PassRound := 0
         while (PassRound < 2) {
