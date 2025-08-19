@@ -11,7 +11,7 @@ scrRatio := 1.0
 ;consts
 stdScreenW := 3840
 stdScreenH := 2160
-waitTolerance := 50
+waitTolerance := 15
 colorTolerance := 15
 
 currentVersion := "v0.1.1"
@@ -1517,16 +1517,20 @@ RookieArena(times)
     ; UserClick(targetX, targetY)
     ; Sleep sleepTime
 
-    targetX := 2129
-    targetY := 1920
+    targetX := 2055
+    targetY := 1900
 
-    checkX := [2129]
-    checkY := [1920]
-    desiredColor := ["0x01D4F6"]
+    checkX := [2055]
+    checkY := [1900]
+    desiredColor := ["0x0FA0E5"]
 
     while UserCheckColor(checkX, checkY, desiredColor) {
         UserClick(targetX, targetY)
         Sleep sleepTime
+
+        UserClick(targetX, targetY)
+        Sleep sleepTime
+
         if A_Index > waitTolerance {
             MsgBox "收取競技場獎勵失败！"
             ExitApp
@@ -1534,10 +1538,6 @@ RookieArena(times)
     }
 
 
-    ; UserClick(targetX, targetY)
-    ; Sleep sleepTime // 2
-    ; UserClick(targetX, targetY)
-    ; Sleep sleepTime // 2
 
     ;进入竞技场
     targetX := 2254
