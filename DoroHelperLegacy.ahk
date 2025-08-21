@@ -11,10 +11,10 @@ scrRatio := 1.0
 ;consts
 stdScreenW := 3840
 stdScreenH := 2160
-waitTolerance := 15
+waitTolerance := 20
 colorTolerance := 15
 
-currentVersion := "v0.1.1"
+currentVersion := "v0.1.2"
 usr := "kevinboy666"
 repo := "DoroHelperLegacy"
 
@@ -783,7 +783,7 @@ FreeShop(numOfBook) {
 
     global isBoughtTrash
 
-    checkX := [349]
+    checkX := [1397]
     checkY := [1305]
     desiredColor := ["0x137CD5"]
 
@@ -1586,28 +1586,28 @@ RookieArena(times)
         UserClick(targetX, targetY)
         Sleep sleepTime
 
-        ; if A_Index > 5 {
-        ;     ;退回大厅
-        ;     targetX := 333
-        ;     targetY := 2041
-        ;     UserClick(targetX, targetY)
-        ;     Sleep sleepTime
+        if A_Index > 5 {
+            ;競技場關閉，退回大厅
+            targetX := 333
+            targetY := 2041
+            UserClick(targetX, targetY)
+            Sleep sleepTime
 
-        ;     checkX := [64]
-        ;     checkY := [470]
-        ;     desiredColor := ["0xFAA72C"]
+            checkX := [64]
+            checkY := [470]
+            desiredColor := ["0xFAA72C"]
 
-        ;     while !UserCheckColor(checkX, checkY, desiredColor) {
-        ;         UserClick(targetX, targetY)
-        ;         Sleep sleepTime
-        ;         if A_Index > waitTolerance {
-        ;             MsgBox "退回大厅失败！"
-        ;             ExitApp
-        ;         }
-        ;     }
+            while !UserCheckColor(checkX, checkY, desiredColor) {
+                UserClick(targetX, targetY)
+                Sleep sleepTime
+                if A_Index > waitTolerance {
+                    MsgBox "退回大厅失败！"
+                    ExitApp
+                }
+            }
 
-        ;     return
-        ; }
+            return
+        }
         
         if A_Index > waitTolerance {
             MsgBox "进入新人竞技场失败！"
@@ -3216,8 +3216,8 @@ ClickOnDoro(*) {
 
     MsgBox "Doro完成任务！" CompanyTowerInfo()
 
-    ;ExitApp
-    Pause
+    ExitApp
+    ; Pause
 }
 
 SleepTimeToLabel(sleepTime) {
