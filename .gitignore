@@ -1,4 +1,5 @@
 *.ini
+*.exe
 getCord.ahk
 DoroHelper.ahk
 DoroHelperLegacy.txt

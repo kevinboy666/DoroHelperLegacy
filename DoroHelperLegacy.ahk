@@ -11,10 +11,10 @@ scrRatio := 1.0
 ;consts
 stdScreenW := 3840
 stdScreenH := 2160
-waitTolerance := 20
+waitTolerance := 30
 colorTolerance := 15
 
-currentVersion := "v0.1.2"
+currentVersion := "v0.1.3"
 usr := "kevinboy666"
 repo := "DoroHelperLegacy"
 
@@ -1269,14 +1269,14 @@ SimulationRoom()
     }
     
     ;进入模拟室
-    targetX := 1547
-    targetY := 1138
+    targetX := 1560
+    targetY := 1000
     UserClick(targetX, targetY)
     Sleep sleepTime
 
-    checkX := [1829, 2024]
-    checkY := [1122, 1094]
-    desiredColor := ["0xF8FCFD", "0xF8FCFD"]
+    checkX := [1829]
+    checkY := [1122]
+    desiredColor := ["0xF8FCFD"]
 
     while !UserCheckColor(checkX, checkY, desiredColor) {
         UserClick(targetX, targetY)
@@ -1285,9 +1285,10 @@ SimulationRoom()
             MsgBox "进入模拟室失败！"
             ExitApp
         }
+        UserClick(1930, 2000)   ;跳過超頻重製確認
     }
 
-    ;MsgBox "ok"
+
 
     ;开始模拟
     targetX := 1917
