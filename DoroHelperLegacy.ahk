@@ -54,7 +54,7 @@ ClickOnCheckForUpdate(*) {
                 MsgBox "下载失败，请检查网络。"
             }
             else {
-                FileMove "DoroDownload.exe", "DoroHelper-" latestObj.version ".exe"
+                FileMove "DoroDownload.exe", "DoroHelperLegacy-" latestObj.version ".exe"
                 MsgBox "已下载至当前目录。"
                 ExitApp
             }
@@ -83,7 +83,7 @@ CheckForUpdate() {
                 MsgBox "下载失败，请检查网络。"
             }
             else {
-                FileMove "DoroDownload.exe", "DoroHelper-" latestObj.version ".exe"
+                FileMove "DoroDownload.exe", "DoroHelperLegacy-" latestObj.version ".exe"
                 MsgBox "已下载至当前目录。"
                 ExitApp
             }
@@ -170,7 +170,7 @@ Login() {
             updateAttempts++ ; 增加更新嘗試次數
 
             if (updateAttempts > waitTolerance * 2) { ; 更新嘗試次數超過限制
-                MsgBox "更新时间过长，请更新游戏后按 Ctrl + c 恢复执行！`n请确保游戏已更新完毕。"
+                MsgBox "更新时间过长，请更新游戏后按 Ctrl + x 恢复执行！`n请确保游戏已更新完毕。"
                 Pause -1
             }
         }
@@ -3469,7 +3469,7 @@ if isCheckedAutoCheckUpdate {
 }
 
 ;创建gui
-doroGui := Gui(, "Doro小帮手" currentVersion)
+doroGui := Gui(, "DoroHelperLegacy" currentVersion)
 doroGui.Opt("+Resize")
 doroGui.MarginY := Round(doroGui.MarginY * 0.9)
 doroGui.SetFont("cred s12")
