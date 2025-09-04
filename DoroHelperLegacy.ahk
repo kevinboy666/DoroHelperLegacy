@@ -14,7 +14,7 @@ stdScreenH := 2160
 waitTolerance := 30
 colorTolerance := 15
 
-currentVersion := "v0.1.4"
+currentVersion := "v0.1.5"
 usr := "kevinboy666"
 repo := "DoroHelperLegacy"
 
