@@ -2,11 +2,10 @@
 
 本项目仅供个人学习研究使用，严禁用于商业用途。
 
-# 前言
+# 介紹
+NIKKE PC 端日常任务清理助手：DoroHelper。支持国际服和港澳台服客户端。
 
-PC 端自用日常任务清理助手：DoroHelper。支持国际服和港澳台服客户端。
-
-延續 DoroHelper v0.1.22
+延續 DoroHelper v0.1.22，支持視窗模式
 
 ![image](https://github.com/kevinboy666/DoroHelperLegacy/blob/master/img/preview.png)
 
@@ -18,7 +17,7 @@ PC 端自用日常任务清理助手：DoroHelper。支持国际服和港澳台�
 
 在右边的 release 里有我编译好的 exe 文件可以直接用。
 
-不放心的话也可以下载代码，安装 AutoHotkey V2.0 并以管理员模式运行`DoroHelper.ahk`。也可以用任意文本编辑器打开`DoroHelper.ahk`修改（史山）代码以适配自己的情况。
+不放心的话也可以下载代码，安装 AutoHotkey V2.0 并以管理员模式运行`DoroHelperLegacy.ahk`。也可以用任意文本编辑器打开`DoroHelper.ahk`修改代码以适配自己的情况。
 
 也可以使用 Ahk2Exe 编译`DoroHelper.ahk`自己生成 exe 可执行文件。
 
