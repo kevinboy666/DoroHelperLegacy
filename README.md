@@ -5,7 +5,7 @@
 # 介紹
 NIKKE PC 端日常任务清理助手：DoroHelper。支持国际服和港澳台服客户端。
 
-延續 DoroHelper v0.1.22 支持視窗模式
+延續 DoroHelper v0.1.22，支持視窗模式
 
 ![image](https://github.com/kevinboy666/DoroHelperLegacy/blob/master/img/preview.png)
 
