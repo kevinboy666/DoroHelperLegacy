@@ -28,8 +28,6 @@ IsSimilarColor(targetColor, color) {
     pg := Format("{:d}", "0x" . substr(color, 5, 2))
     pb := Format("{:d}", "0x" . substr(color, 7, 2))
 
-    ;MsgBox tr tg tb pr pg pb
-
     distance := sqrt((tr - pr) ** 2 + (tg - pg) ** 2 + (tb - pb) ** 2)
 
     if (distance < colorTolerance)
@@ -42,7 +40,7 @@ ClickOnCheckForUpdate(*) {
     latestObj := Github.latest(usr, repo)
     if currentVersion != latestObj.version {
         userResponse := MsgBox(
-            "DoroHelper存在更新版本:`n"
+            "DoroHelper存在新版本:`n"
             "`nVersion: " latestObj.version
             "`nNotes:`n"
             . latestObj.change_notes
@@ -63,7 +61,7 @@ ClickOnCheckForUpdate(*) {
         }
     }
     else {
-        MsgBox "当前Doro已是最新版本。"
+        MsgBox "DoroHelper已是最新版本。"
     }
 }
 ; 自動更新
@@ -71,7 +69,7 @@ CheckForUpdate() {
     latestObj := Github.latest(usr, repo)
     if currentVersion != latestObj.version {
         userResponse := MsgBox(
-            "DoroHelper存在更新版本:`n"
+            "DoroHelper存在新版本:`n"
             "`nVersion: " latestObj.version
             "`nNotes:`n"
             . latestObj.change_notes
@@ -164,22 +162,20 @@ Login() {
         UserClick(targetX, targetY)
         Sleep sleepTime
 
-        if UserCheckColor([1973, 1969], [1368, 1432], ["0x00ADFB", "0x00ADFB"]) {
-            UserClick(2127, 1400)
+        ; 更新
+        updateAttempts := 0 ; 初始化 updateAttempts
+        if UserCheckColor([2055], [1365], ["0x00ADFB"]) {
+            UserClick(2055, 1365)
             Sleep sleepTime
+            updateAttempts++ ; 增加更新嘗試次數
+
+            if (updateAttempts > waitTolerance * 2) { ; 更新嘗試次數超過限制
+                MsgBox "更新时间过长，请更新游戏后按 Ctrl + c 恢复执行！`n请确保游戏已更新完毕。"
+                Pause -1
+            }
         }
 
-        if UserCheckColor([1965, 1871], [1321, 1317], ["0x00A0EB", "0xF7F7F7"]) {
-            UserClick(2191, 1350)
-            Sleep sleepTime
-        }
-
-        if UserCheckColor([1720, 2111], [1539, 1598], ["0x00AEFF", "0x00AEFF"]) {
-            UserClick(1905, 1568)
-            Sleep sleepTime
-        }
-
-        if A_Index > waitTolerance {
+        if A_Index > waitTolerance { ; 登入嘗試次數超過限制
             MsgBox "登录失败！"
             ExitApp
         }
