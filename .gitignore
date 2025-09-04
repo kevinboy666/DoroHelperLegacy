@@ -1,6 +1,8 @@
+# Ignore all .ini, .exe, and .txt files
 *.ini
 *.exe
-getCord.ahk
-test.ahk
-DoroHelper.ahk
-DoroHelperLegacy.txt
+*.txt
+
+# Ignore all .ahk files except for DoroHelperLegacy.ahk
+*.ahk
+!DoroHelperLegacy.ahk
