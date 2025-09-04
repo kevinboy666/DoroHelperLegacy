@@ -98,7 +98,7 @@ UserClick(sX, sY, k := scrRatio) {
     Send "{Click " uX " " uY "}"
 }
 
-;檢查使用者
+;檢查座標顏色
 UserCheckColor(sX, sY, sC, k := scrRatio) {
     loop sX.Length {
         uX := Round(sX[A_Index] * k)
@@ -127,6 +127,7 @@ isAutoOff(sX, sY, k) {
 autoBurstOn := false
 autoAimOn := false
 
+;開啟自動
 CheckAutoBattle() {
     global autoBurstOn
     global autoAimOn
@@ -1468,7 +1469,6 @@ SimulationRoom()
     }
 }
 
-
 ;=============================================================
 ;7: 新人竞技场打第三位，顺带收50%以上的菜
 RookieArena(times)
@@ -2080,13 +2080,11 @@ MissionCompleted() {
 }
 
 MissionFailed() {
-    checkX := [2306, 1920, 1590, 1560]
-    checkY := [702, 1485, 1489, 1473]
-    desiredColor1 := ["0xB71013", "0xE9E9E7", "0x161515", "0xE9E9E7"]
-    desiredColor2 := ["0xAD080B", "0xE9E9E7", "0x161515", "0xE9E9E7"]
+    checkX := [1610, 1920, 2220]
+    checkY := [1660, 1660, 1660]
+    desiredColor := ["0xA10F11", "0xA10F11", "0xA10F11"]
 
-    if UserCheckColor(checkX, checkY, desiredColor1) or UserCheckColor(checkX, checkY, desiredColor2,
-        scrRatio)
+    if UserCheckColor(checkX, checkY, desiredColor)
         return true
     else
         return false
@@ -2116,7 +2114,7 @@ CompanyTowerInfo() {
     return info
 }
 
-;10: 企业塔
+;10: 爬企业塔
 CompanyTower() {
     targetX := 2689
     targetY := 1463
@@ -2149,13 +2147,13 @@ CompanyTower() {
     }
 
     ;进入无限之塔
-    targetX := 2278
-    targetY := 776
+    targetX := 2180
+    targetY := 630
     UserClick(targetX, targetY)
     Sleep sleepTime
 
     checkX := [2405]
-    checkY := [1014]
+    checkY := [1000]
     desiredColor := ["0xF8FBFE"]
 
     while !UserCheckColor(checkX, checkY, desiredColor) {
@@ -2170,9 +2168,9 @@ CompanyTower() {
     Sleep 1500
 
     ;尝试进入每座企业塔
-    targX := [1501, 1779, 2061, 2332]
-    targY := [1497, 1497, 1497, 1497]
-    ckptX := [1383, 1665, 1935, 2222]
+    targX := [1498, 1777, 2057, 2337]
+    targY := [1480, 1480, 1480, 1480]
+    ckptX := [1498, 1777, 2057, 2337]
     ckptY := [1925, 1925, 1925, 1925]
 
     loop targX.Length {
@@ -2199,7 +2197,7 @@ CompanyTower() {
         }
 
         ;直到成功进入企业塔
-        checkX := [3738]
+        checkX := [3738]    ;直接前往的圖標
         checkY := [447]
         desiredColor := ["0xF8FCFE"]
 
@@ -2214,9 +2212,8 @@ CompanyTower() {
         ;进入关卡页面
         targetX := 1918
         targetY := 919
-
-        checkX := [992]
-        checkY := [2011]
+        checkX := [1000]
+        checkY := [2000]
         desiredColor := ["0x000000"]
 
         while UserCheckColor(checkX, checkY, desiredColor) {
@@ -2230,8 +2227,8 @@ CompanyTower() {
 
         ;如果战斗次数已经用完
         Sleep 1000
-        checkX := [2038]
-        checkY := [2057]
+        checkX := [2080]
+        checkY := [2000]
         desiredColor := ["0x4D4E50"]
         if UserCheckColor(checkX, checkY, desiredColor) {
             checkX := [3738]
@@ -2242,19 +2239,19 @@ CompanyTower() {
                 Sleep sleepTime
             }
 
-            checkX := [2405]
-            checkY := [1014]
+            checkX := [1000]
+            checkY := [2000]
             desiredColor := ["0xF8FBFE"]
             while !UserCheckColor(checkX, checkY, desiredColor)
                 Sleep sleepTime
 
             Sleep 1500
-            continue
+            continue    ;嘗試下個企業塔
         }
 
         ;点击进入战斗
-        targetX := 2249
-        targetY := 1997
+        targetX := 2080
+        targetY := 2000
         UserClick(targetX, targetY)
         Sleep sleepTime
         UserClick(targetX, targetY)
@@ -3188,7 +3185,7 @@ ClickOnDoro(*) {
         if isCheckedLoveTalking
             LoveTalking(numOfLoveTalking) ;;对前n位nikke进行好感度咨询(可以通过收藏把想要咨询的nikke排到前面)
 
-        if isCheckedTribeTower && isCheckedCompanyTower 
+        if isCheckedCompanyTower && isCheckedTribeTower
             TribeTower() ;爬塔一次(蹭每日任务)
 
         if isCheckedCompanyTower && !isCheckedTribeTower
@@ -3473,13 +3470,14 @@ doroGui := Gui(, "DoroHelperLegacy" currentVersion)
 doroGui.Opt("+Resize")
 doroGui.MarginY := Round(doroGui.MarginY * 0.9)
 doroGui.SetFont("cred s12")
-doroGui.Add("Text", "R1", "紧急停止按ctrl + z 暂停按ctrl + x")
+doroGui.Add("Text", "R1", "紧急停止按 ctrl + z 暂停按 ctrl + x")
 doroGui.Add("Link", " R1", '<a href="https://github.com/kevinboy666/DoroHelperLegacy">项目地址</a>')
 doroGui.SetFont()
 doroGui.Add("Button", "R1 x+10", "帮助").OnEvent("Click", ClickOnHelp)
 doroGui.Add("Button", "R1 x+10", "检查更新").OnEvent("Click", ClickOnCheckForUpdate)
 Tab := doroGui.Add("Tab3", "xm") ;由于autohotkey有bug只能这样写
 Tab.Add(["doro设置", "收获", "商店", "日常", "默认"])
+;--------------------------------------------
 Tab.UseTab("doro设置")
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedAutoCheckUpdate) " R2", "自动检查更新(确保能连上github)").OnEvent("Click",
     ClickAutoCheckUpdate)
@@ -3490,6 +3488,7 @@ doroGui.Add("Text", , "色差容忍度，能跑就别改")
 doroGui.Add("DropDownList", "Choose" ColorToleranceToLabel(colorTolerance), ["严格", "宽松"]).OnEvent("Change",
     ChangeOnColorTolerance)
 doroGui.Add("Button", "R1", "保存当前设置").OnEvent("Click", SaveSettings)
+;--------------------------------------------
 Tab.UseTab("收获")
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedOutposeDefence) " R1.2", "领取前哨基地防御奖励+1次免费歼灭").OnEvent("Click",
     ClickOnOutpostDefence)
@@ -3500,6 +3499,7 @@ doroGui.Add("Checkbox", IsCheckedToString(isCheckedFriendPoint) " R1.2", "好友
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedMail) " R1.2", "邮箱收取").OnEvent("Click", ClickOnMail)
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedMission) " R1.2", "任务收取").OnEvent("Click", ClickOnMission)
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedPass) " R1.2", "通行证收取").OnEvent("Click", ClickOnPass)
+;--------------------------------------------
 Tab.UseTab("商店")
 doroGui.Add("Text", "R1.2 Section", "普通商店")
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedFreeShop) " R1.2 xs+15 ", "每日白嫖2次").OnEvent("Click", ClickOnFreeShop
@@ -3528,6 +3528,7 @@ doroGui.Add("Text", " R1.2 xs+15", "购买资源")
 doroGui.Add("Checkbox", " R1.2 xs+15", "信用点+盒")
 doroGui.Add("Checkbox", " R1.2 x+1", "战斗数据辑盒")
 doroGui.Add("Checkbox", " R1.2 x+1", "芯尘盒")
+;--------------------------------------------
 Tab.UseTab("日常")
 doroGui.Add("Checkbox", IsCheckedToString(isCheckedSimulationRoom) " R1.2", "模拟室5C(普通关卡需要快速战斗)").OnEvent("Click",
     ClickOnSimulationRoom)
@@ -3545,6 +3546,7 @@ doroGui.Add("Checkbox", IsCheckedToString(isCheckedInterception) " R1.2 xs", "�
     ClickOnInterception)
 doroGui.Add("DropDownList", "Choose" InterceptionBossToLabel(InterceptionBoss), ["克拉肯(石)，编队1", "过激派(头)，编队2",
     "镜像容器(手)，编队3", "茵迪维利亚(衣)，编队4", "死神(脚)，编队5"]).OnEvent("Change", ChangeOnInterceptionBoss)
+;--------------------------------------------
 Tab.UseTab("默认")
 doroGui.Add("Text", , "购买几本代码手册？")
 doroGui.Add("DropDownList", "Choose" NumOfBookToLabel(numOfBook), [0, 1, 2, 3]).OnEvent("Change", ChangeOnNumOfBook)
